@@ -3,1026 +3,500 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Aperos Mulilla 70cm</title>
+<title>Aperos Mulilla 70cm - Sistema Completo</title>
 <style>
-:root{
-  --bg:#f0ede6;--surface:#fff;--dark:#1a2535;--mid:#5a6478;--light:#e2ddd4;
+:root{--bg:#f0ede6;--sf:#fff;--dk:#1a2535;--md:#5a6478;--lt:#e2ddd4;
   --b1:#1e5a3a;--b2:#1a5a5a;--b3:#5a2a0a;--b4:#4a2a6a;
-  --gold:#c89a2a;--gold-l:#f0c050;--done:#2a7a4a;--r:10px;
-  --sh:0 2px 12px rgba(0,0,0,.12);
-}
+  --gd:#c89a2a;--gl:#f0c050;--dn:#2a7a4a;--r:10px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dark);min-height:100vh}
-
-/* HEADER */
-header{background:var(--dark);position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4)}
-.hdr{display:flex;align-items:center;gap:12px;padding:10px 16px;max-width:1300px;margin:0 auto}
-.logo{font-size:26px}
-.hdr h1{font-size:16px;font-weight:800;color:#fff;line-height:1.2}
-.hdr p{font-size:11px;color:#8a9ab0;margin-top:1px}
-.base-tabs{background:var(--dark);border-top:1px solid rgba(255,255,255,.08);display:flex;overflow-x:auto;padding:0 16px;max-width:1300px;margin:0 auto;scrollbar-width:none}
-.base-tabs::-webkit-scrollbar{display:none}
-.btab{padding:9px 16px;border:none;background:transparent;color:#8a9ab0;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s;flex-shrink:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--dk);line-height:1.5}
+header{background:var(--dk);position:sticky;top:0;z-index:200;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.hdr{display:flex;align-items:center;gap:16px;padding:12px 20px;max-width:1400px;margin:0 auto}
+.hdr h1{font-size:18px;font-weight:900;color:#fff;line-height:1.2}
+.hdr p{font-size:11px;color:#8a9ab0;margin-top:2px}
+.btabs{background:var(--dk);border-top:1px solid rgba(255,255,255,.1);display:flex;overflow-x:auto;padding:0 20px;max-width:1400px;margin:0 auto;scrollbar-width:none}
+.btabs::-webkit-scrollbar{display:none}
+.btab{padding:10px 15px;border:none;background:transparent;color:#8a9ab0;cursor:pointer;font-size:13px;font-weight:700;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s;flex-shrink:0}
 .btab.active{color:#fff}
-.btab.b1.active{border-bottom-color:var(--b1)}
-.btab.b2.active{border-bottom-color:var(--b2)}
-.btab.b3.active{border-bottom-color:var(--b3)}
-.btab.b4.active{border-bottom-color:var(--b4)}
-.btab.bs.active{border-bottom-color:var(--gold)}
-
-/* LAYOUT */
-.app{max-width:1300px;margin:0 auto;padding:16px;display:grid;grid-template-columns:280px 1fr;gap:16px}
-@media(max-width:800px){.app{grid-template-columns:1fr}}
-
-/* SIDEBAR */
+.btab.t0.active{border-bottom-color:var(--b1)}.btab.t1.active{border-bottom-color:var(--b2)}.btab.t2.active{border-bottom-color:var(--b3)}.btab.t3.active{border-bottom-color:var(--b4)}.btab.t4.active{border-bottom-color:var(--gd)}.btab.t5.active{border-bottom-color:#888}
+.app{max-width:1400px;margin:0 auto;padding:16px 20px;display:grid;grid-template-columns:280px 1fr;gap:16px}
+@media(max-width:900px){.app{grid-template-columns:1fr}}
 .sidebar{display:flex;flex-direction:column;gap:12px}
-.base-card{border-radius:var(--r);padding:14px;color:#fff;box-shadow:var(--sh)}
-.base-card h2{font-size:20px;font-weight:900}
-.base-card .sub{font-size:11px;opacity:.8;margin-top:2px}
+.bcard{border-radius:var(--r);padding:15px;color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.bcard h2{font-size:19px;font-weight:900;margin-bottom:2px}.bcard .sub{font-size:11px;opacity:.85}
 .bstats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
-.bst{background:rgba(255,255,255,.15);border-radius:6px;padding:7px;text-align:center}
-.bst .v{font-size:17px;font-weight:800}
-.bst .l{font-size:9px;opacity:.75;margin-top:1px;text-transform:uppercase;letter-spacing:.5px}
-
-.alist{background:var(--surface);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
-.alist-hdr{padding:10px 14px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--mid);border-bottom:1px solid var(--light);display:flex;justify-content:space-between;align-items:center}
-.chkall{font-size:11px;color:var(--gold);cursor:pointer;font-weight:700;border:none;background:none}
-.aitem{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;border-bottom:1px solid var(--light);transition:.15s;position:relative}
-.aitem:last-child{border-bottom:none}
-.aitem:hover{background:#f5f4f0}
-.aitem.active{background:#f0faf4}
-.aitem.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac,var(--b1));border-radius:0 3px 3px 0}
+.bst{background:rgba(255,255,255,.15);border-radius:6px;padding:8px;text-align:center}
+.bst .v{font-size:16px;font-weight:800}.bst .l{font-size:8.5px;opacity:.75;text-transform:uppercase;letter-spacing:.5px}
+.alist{background:var(--sf);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.12);overflow:hidden}
+.alhdr{padding:10px 13px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--md);border-bottom:1px solid var(--lt);display:flex;justify-content:space-between}
+.ai{display:flex;align-items:center;gap:9px;padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--lt);transition:.15s;position:relative}
+.ai:hover{background:#f5f4f0}.ai.active{background:#f0faf4}
+.ai.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac,var(--b1));border-radius:0 3px 3px 0}
 .achk{width:20px;height:20px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;background:#fff;font-size:11px;font-weight:800}
-.achk.done{background:var(--done);border-color:var(--done);color:#fff}
-.aname{flex:1;font-size:13px;font-weight:600;line-height:1.3}
-.anum{font-size:10px;font-weight:800;color:#fff;background:var(--ac,var(--b1));padding:2px 7px;border-radius:10px;flex-shrink:0}
-
-/* MAIN */
+.achk.done{background:var(--dn);border-color:var(--dn);color:#fff}
+.an{flex:1;font-size:13px;font-weight:600}.anum{font-size:10px;font-weight:800;color:#fff;background:var(--ac,var(--b1));padding:2px 6px;border-radius:9px;flex-shrink:0}
 .main{display:flex;flex-direction:column;gap:14px}
-
-/* PROGRESS */
-.prog-card{background:var(--surface);border-radius:var(--r);padding:14px 18px;box-shadow:var(--sh)}
-.prog-label{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:7px;color:var(--mid)}
-.prog-bar{height:8px;background:var(--light);border-radius:4px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--b1),#2a9a6a);border-radius:4px;transition:.5s}
-
-/* WELCOME */
-.welcome{background:var(--surface);border-radius:var(--r);padding:40px 30px;text-align:center;box-shadow:var(--sh)}
-.welcome .wi{font-size:52px;margin-bottom:14px}
-.welcome h2{font-size:22px;font-weight:800;margin-bottom:8px}
-.welcome p{color:var(--mid);font-size:14px;max-width:380px;margin:0 auto;line-height:1.6}
-
-/* APERO CARD */
-.acard{background:var(--surface);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
-.acard-hdr{padding:18px 22px;color:#fff;display:flex;align-items:flex-start;gap:12px}
-.acard-hdr .ic{font-size:32px;flex-shrink:0}
-.acard-hdr h2{font-size:20px;font-weight:900;margin-bottom:3px}
-.acard-hdr .btag{display:inline-block;background:rgba(255,255,255,.2);padding:2px 9px;border-radius:10px;font-size:11px;font-weight:600;margin-right:6px}
-.acard-hdr .dtag{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:600}
-.d1{background:#e8f5e9;color:#1e6a38}
-.d2{background:#fff8e1;color:#8a6a00}
-.d3{background:#fbe9e7;color:#8a2a0a}
-.chkbtn{margin-left:auto;flex-shrink:0;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.35);color:#fff;padding:7px 14px;border-radius:6px;cursor:pointer;font-weight:800;font-size:13px;transition:.2s;white-space:nowrap}
-.chkbtn.done{background:var(--done);border-color:var(--done)}
-
-/* INNER TABS */
-.itabs{display:flex;border-bottom:1px solid var(--light);background:#fafaf7;overflow-x:auto;scrollbar-width:none}
+.pgc{background:var(--sf);border-radius:var(--r);padding:12px 16px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.pgl{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:6px;color:var(--md)}
+.pgb{height:8px;background:var(--lt);border-radius:4px;overflow:hidden}
+.pgf{height:100%;background:linear-gradient(90deg,#2a9a6a,#1e7a4a);border-radius:4px;transition:.5s}
+.welcome{background:var(--sf);border-radius:var(--r);padding:40px 30px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.welcome .wi{font-size:52px;margin-bottom:14px}.welcome h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.welcome p{color:var(--md);font-size:13px;max-width:420px;margin:0 auto;line-height:1.7}
+.acard{background:var(--sf);border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.12);overflow:hidden}
+.achdr{padding:16px 20px;color:#fff;display:flex;align-items:flex-start;gap:12px;justify-content:space-between}
+.achdr-left{display:flex;gap:12px;align-items:flex-start;flex:1}
+.achdr .ic{font-size:32px;flex-shrink:0}.achdr h2{font-size:19px;font-weight:900;margin-bottom:4px}
+.achdr-right{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.btag{display:inline-block;background:rgba(255,255,255,.2);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;margin-right:4px;margin-bottom:4px}
+.dtag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.d1{background:#e8f5e9;color:#1e6a38}.d2{background:#fff8e1;color:#8a6a00}.d3{background:#fbe9e7;color:#8a2a0a}
+.btn{padding:8px 13px;border-radius:6px;border:none;cursor:pointer;font-weight:700;font-size:11px;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.btn-primary{background:#1e5a3a;color:#fff}.btn-primary:hover{background:#2a8a52}
+.btn-print{background:rgba(255,255,255,.25);color:#fff;border:1.5px solid rgba(255,255,255,.4)}.btn-print:hover{background:rgba(255,255,255,.35)}
+.btn-check{background:#2a7a4a;color:#fff}.btn-check:hover{background:#1e5a3a}
+.itabs{display:flex;border-bottom:1px solid var(--lt);background:#fafaf7;overflow-x:auto;scrollbar-width:none}
 .itabs::-webkit-scrollbar{display:none}
-.itab{padding:11px 16px;border:none;background:none;font-size:12px;font-weight:700;color:var(--mid);cursor:pointer;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap;flex-shrink:0}
-.itab.active{color:var(--dark);border-bottom-color:var(--gold)}
-.tcont{padding:20px}
-
-/* INFO GRID */
-.igrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-@media(max-width:600px){.igrid{grid-template-columns:1fr}}
-.iblock{background:#f8f7f3;border-radius:8px;padding:13px;border-left:4px solid var(--gold)}
-.iblock .il{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--gold);margin-bottom:5px}
-.iblock p{font-size:13px;line-height:1.55;color:var(--dark)}
-.iblock .bignum{font-size:24px;font-weight:900;color:var(--b1)}
-
+.itab{padding:11px 15px;border:none;background:none;font-size:12px;font-weight:700;color:var(--md);cursor:pointer;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap;flex-shrink:0}
+.itab.active{color:var(--dk);border-bottom-color:var(--gd);font-weight:800}
+.tc{padding:18px}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+@media(max-width:700px){.igrid{grid-template-columns:1fr}}
+.ib{background:linear-gradient(135deg,#f8f7f3,#fafaf7);border-radius:8px;padding:13px;border-left:4px solid var(--gd);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.ib .il{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--gd);margin-bottom:5px}
+.ib p{font-size:13px;line-height:1.6}.ib .bn{font-size:24px;font-weight:900;color:var(--b1)}
 .slist{list-style:none;display:flex;flex-direction:column;gap:8px}
-.slist li{display:flex;gap:10px;align-items:flex-start;background:#f8f7f3;border-radius:8px;padding:11px 13px}
-.snum{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#111;font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.slist li p{font-size:13px;line-height:1.5}
-
-/* PLAN VIEWS */
-.plan-views{display:flex;flex-direction:column;gap:12px}
-.view-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
-.vtab{padding:6px 14px;border-radius:20px;border:2px solid var(--light);background:var(--surface);font-size:12px;font-weight:700;cursor:pointer;transition:.2s;color:var(--mid)}
-.vtab.active{background:var(--dark);color:#fff;border-color:var(--dark)}
-.plan-box{background:#fafaf7;border-radius:8px;padding:14px;border:1px solid var(--light);overflow:auto;text-align:center}
-.plan-box svg{max-width:100%;height:auto;display:block;margin:0 auto}
-.plan-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mid)}
-.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-.plan-notes{margin-top:12px;display:flex;flex-direction:column;gap:6px}
-.pnote{display:flex;gap:8px;font-size:13px;color:var(--mid);background:#fffbe8;border-radius:6px;padding:8px 10px;border-left:3px solid var(--gold)}
-.pnote::before{content:'⚑';color:var(--gold);flex-shrink:0}
-
-/* SHOP */
-.stbl{width:100%;border-collapse:collapse;font-size:13px}
-.stbl th{background:var(--dark);color:#fff;padding:9px 11px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
-.stbl td{padding:8px 11px;border-bottom:1px solid var(--light)}
+.slist li{display:flex;gap:10px;align-items:flex-start;background:#f8f7f3;border-radius:8px;padding:11px 13px;border-left:3px solid var(--gd)}
+.sn{width:24px;height:24px;border-radius:50%;background:var(--gd);color:#1a1a1a;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.slist li p{font-size:13px;line-height:1.6}
+.pvtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.pvtab{padding:6px 13px;border-radius:18px;border:2px solid var(--lt);background:var(--sf);font-size:11px;font-weight:700;cursor:pointer;transition:.2s;color:var(--md)}
+.pvtab.active{background:var(--dk);color:#fff;border-color:var(--dk)}
+.pbox{background:#fafaf7;border-radius:8px;padding:14px;border:1px solid var(--lt);overflow:auto;text-align:center;min-height:200px}
+.pbox svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.pbox img{max-width:100%;height:auto}
+.pleg{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pli{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--md);background:#fff;padding:5px 10px;border-radius:6px}
+.pld{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.pnotes{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.pn{display:flex;gap:8px;font-size:12.5px;color:var(--md);background:#fffbe8;border-radius:6px;padding:8px 10px;border-left:3px solid var(--gd)}
+.stbl{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+.stbl th{background:var(--dk);color:#fff;padding:9px 11px;text-align:left;font-size:9px;font-weight:800;text-transform:uppercase}
+.stbl td{padding:8px 11px;border-bottom:1px solid var(--lt)}
 .stbl tr:nth-child(even) td{background:#fafaf8}
-.stbl .pr{color:var(--b1);font-weight:800;text-align:right}
-.stbl .qty{color:#8a3a0a;font-weight:700}
-.stotal{margin-top:12px;background:var(--dark);color:#fff;border-radius:8px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center}
-.stotal .tl{font-size:13px;font-weight:600}
-.stotal .tp{font-size:22px;font-weight:900;color:var(--gold-l)}
-
-/* SUMMARY */
-.sum-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:16px}
-.sum-bcard{border-radius:var(--r);padding:16px;color:#fff;cursor:pointer;transition:.2s;box-shadow:var(--sh)}
-.sum-bcard:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.18)}
-.sum-bcard h3{font-size:18px;font-weight:900}
-.sum-bcard .cnt{font-size:26px;font-weight:900;margin-top:8px}
-.sum-bcard .cnt span{font-size:12px;font-weight:400;opacity:.8}
-.alist2{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
-.sitem{background:var(--surface);border-radius:8px;padding:11px;box-shadow:var(--sh);display:flex;gap:9px;align-items:center;cursor:pointer;transition:.15s}
-.sitem:hover{background:#f5f4f0}
-.sc{width:22px;height:22px;border-radius:50%;background:#e0e0e0;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
-.sc.done{background:var(--done);color:#fff}
-.sn{font-size:12px;font-weight:700;line-height:1.3}
-.sb{font-size:10px;margin-top:1px}
-
-.tip{background:#fffbe8;border:1px solid #f0d060;border-radius:8px;padding:11px 13px;font-size:13px;display:flex;gap:9px;align-items:flex-start;margin-top:10px}
-.hidden{display:none!important}
+.stbl .pr{color:var(--b1);font-weight:800;text-align:right}.stbl .qty{color:#8a3a0a;font-weight:700}
+.stotal{margin-top:12px;background:var(--dk);color:#fff;border-radius:8px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+.stotal .tl{font-size:13px}.stotal .tp{font-size:22px;color:var(--gl)}
+.tip{background:#fffbe8;border:1px solid #f0d060;border-radius:8px;padding:11px 13px;font-size:12.5px;display:flex;gap:8px;align-items:flex-start;margin-top:10px}
+.tip span:first-child{font-size:18px;flex-shrink:0}
+@media print{
+  body{background:white}
+  header,.sidebar,.btabs,.btn{display:none}
+  .app{grid-template-columns:1fr;gap:0;padding:0}
+  .acard,.welcome,.pgc{page-break-inside:avoid;box-shadow:none;border:1px solid #ddd;margin-bottom:20px}
+  .pbox{max-height:none;page-break-inside:avoid}
+  .stbl{page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
+
 <header>
   <div class="hdr">
-    <div class="logo">🚜</div>
+    <div style="font-size:28px">🚜</div>
     <div>
-      <h1>Sistema de Aperos — Mulilla 70 cm</h1>
-      <p>4 bases · 15 aperos · Planos con múltiples vistas</p>
+      <h1>Sistema Completo de Aperos para Mulilla 70cm</h1>
+      <p>4 bases modulares · 15 aperos intercambiables · Pasadores Ø16mm cambio rápido (<2 min)</p>
     </div>
   </div>
-  <div style="max-width:1300px;margin:0 auto">
-    <div class="base-tabs">
-      <button class="btab b1 active" onclick="switchBase(0)">🌱 Base 1 · Suelo+Ajos</button>
-      <button class="btab b2" onclick="switchBase(1)">🧹 Base 2 · Acabado</button>
-      <button class="btab b3" onclick="switchBase(2)">⚙️ Base 3 · Peso</button>
-      <button class="btab b4" onclick="switchBase(3)">🪑 Base 4 · Sulky</button>
-      <button class="btab bs" onclick="switchBase(4)">📋 Resumen</button>
-    </div>
+  <div class="btabs">
+    <button class="btab t0 active" onclick="sw(0)">🌱 BASE 1 · Suelo+Ajos</button>
+    <button class="btab t1" onclick="sw(1)">🧹 BASE 2 · Acabado</button>
+    <button class="btab t2" onclick="sw(2)">⚙️ BASE 3 · Peso</button>
+    <button class="btab t3" onclick="sw(3)">🪑 BASE 4 · Sulky</button>
+    <button class="btab t4" onclick="sw(4)">📋 Resumen</button>
   </div>
 </header>
 
 <div class="app">
-  <div class="sidebar" id="sidebar"></div>
-  <div class="main" id="main"></div>
+  <div class="sidebar" id="SB"></div>
+  <div class="main" id="MN"></div>
 </div>
 
 <script>
-// ═══════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════
 const BASES=[
-  {id:'b1',name:'Base 1',label:'Porta-aperos universal',color:'#1e5a3a',aperos:9,cost:'130-155 €',time:'2-3 tardes',desc:'La base principal. Barra 70cm con 5 puntos de anclaje. Cubre el 60% de todas las labores.'},
-  {id:'b2',name:'Base 2',label:'Bastidor frontal ligero',color:'#1a5a5a',aperos:3,cost:'60-75 €',time:'1,5 tardes',desc:'Marco rectangular 65×20cm. Solo 4kg vacío. Para limpieza y acabado del suelo.'},
-  {id:'b3',name:'Base 3',label:'Bastidor con ruedas',color:'#5a2a0a',aperos:2,cost:'125-145 €',time:'2 tardes',desc:'Chasis ruedas R13 eje Ø30mm. Hasta 200kg carga. Para rodillo y esparcidor.'},
-  {id:'b4',name:'Base 4',label:'Asiento sulky',color:'#4a2a6a',aperos:1,cost:'40-50 €',time:'1 tarde',desc:'Se engancha a cualquier base en 30 segundos sin herramientas.'},
+  {id:0,name:'Base 1',label:'Porta-aperos universal',color:'#1e5a3a',aperos:[1,2,3,4,5,6,7,8,9],cost:'130-155€',time:'2-3 tardes',
+   desc:'La base principal del sistema. Barra 70cm con 5 puntos de anclaje Ø18mm. Cubre el 60% de todas las labores del huerto.',
+   fabInfo:'Tubo 50×50×4mm (700mm) · 5 orejetas Ø18mm · Enganche con cadena regulable · Profundidad ajustable con perno M10 mariposa'},
+  {id:1,name:'Base 2',label:'Bastidor frontal ligero',color:'#1a5a5a',aperos:[10,11,12],cost:'60-75€',time:'1,5 tardes',
+   desc:'Marco rectangular 65×20cm con solo 4kg de peso. Ideal para labores de limpieza y acabado del suelo.',
+   fabInfo:'Marco 40×40×3mm · 3 orejetas Ø18mm · Bastidor rígido pero ligero'},
+  {id:2,name:'Base 3',label:'Bastidor con ruedas',color:'#5a2a0a',aperos:[13,14],cost:'125-145€',time:'2 tardes',
+   desc:'Chasis con ruedas R13 y eje Ø30mm acero C45. Soporta hasta 200kg de carga útil.',
+   fabInfo:'Eje Ø30mm acero C45 · Rodamientos 6006 · Ruedas R13 · Bisagras basculantes para volcado'},
+  {id:3,name:'Base 4',label:'Asiento sulky',color:'#4a2a6a',aperos:[15],cost:'40-50€',time:'1 tarde',
+   desc:'Se engancha a cualquier base en 30 segundos sin herramientas. Placa base Ø18mm universal.',
+   fabInfo:'Placa base 2×Ø18mm · Poste regulable cada 4cm · Ruedas R10 · Cojín espuma D-30'},
 ];
 
-// SVG colors
-const C={dark:'#1a2535',blue:'#1e5a3a',teal:'#1a5a5a',steel:'#6a8090',steell:'#9ab0c0',gnd:'#8a6a45',gndl:'#c3a06e',yel:'#c89a2a',red:'#a03030',dim:'#a02828',wh:'white'};
-
-// ── SVG HELPERS ──
-const A=`<defs><marker id="arr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="${C.dim}"/></marker></defs>`;
-const gnd=(x,y,w,h=28)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${C.gndl}" stroke="${C.gnd}" stroke-width="1.5"/>
-  ${Array.from({length:Math.floor(w/12)},(_,i)=>`<line x1="${x+i*12}" y1="${y}" x2="${x+i*12-14}" y2="${y+h}" stroke="${C.gnd}" stroke-width=".8" opacity=".5"/>`).join('')}`;
-const lbl=(x,y,t,bg=C.blue)=>{const ls=t.split('\n');const w=ls.reduce((a,l)=>Math.max(a,l.length*6.2),0);const h=ls.length*15+8;return `<rect x="${x-4}" y="${y-4}" width="${w+8}" height="${h}" fill="${bg}" rx="3" opacity=".95"/>${ls.map((l,i)=>`<text x="${x}" y="${y+10+i*15}" font-size="10.5" fill="white">${l}</text>`).join('')}`;};
-const dh=(x1,x2,y,t,s='top')=>`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${C.dim}" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/><text x="${(x1+x2)/2}" y="${y+(s==='top'?-6:12)}" font-size="10" fill="${C.dim}" text-anchor="middle" font-weight="700">${t}</text>`;
-const dv=(x,y1,y2,t,s='left')=>`<line x1="${x}" y1="${y1}" x2="${x}" y2="${y2}" stroke="${C.dim}" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/><text x="${x+(s==='left'?-5:5)}" y="${(y1+y2)/2+4}" font-size="10" fill="${C.dim}" text-anchor="${s==='left'?'end':'start'}" font-weight="700">${t}</text>`;
-const wrap=(content,w=760,h=420)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><rect width="${w}" height="${h}" fill="#fafaf8" rx="6"/>${A}${content}</svg>`;
-const hdr=(t,sub)=>`<text x="380" y="20" font-size="12.5" fill="${C.dark}" text-anchor="middle" font-weight="800">${t}</text><text x="380" y="34" font-size="10" fill="#6a7a8a" text-anchor="middle">${sub}</text>`;
-const note=(t,y)=>`<rect x="30" y="${y}" width="700" height="26" fill="#fffbe8" stroke="#e0c040" stroke-width="1" rx="4"/><text x="44" y="${y+17}" font-size="10" fill="#6a4000">⚑ ${t}</text>`;
-
-// ── CULTIVADOR VIEWS ──
-function cultFrontal(){return wrap(`${hdr('CULTIVADOR DE GANCHOS','Vista frontal · 3 dientes · Ancho 45 cm')}
-  <rect x="310" y="44" width="140" height="20" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-  <circle cx="335" cy="54" r="5" fill="${C.dark}"/><circle cx="425" cy="54" r="5" fill="${C.dark}"/>
-  ${lbl(260,38,'Rastra enganche\nØ18mm × 2')}
-  <rect x="140" y="90" width="480" height="20" fill="${C.steel}" stroke="${C.dark}" stroke-width="2" rx="2"/>
-  <text x="380" y="103" font-size="9.5" fill="white" text-anchor="middle">Barra 45cm · 40×30×2mm</text>
-  ${[190,330,470].map(tx=>`
-    <rect x="${tx-8}" y="110" width="16" height="20" fill="#2a6a4a" stroke="${C.dark}" stroke-width="1.5"/>
-    <path d="M${tx},130 C${tx-1},170 ${tx-8},208 ${tx-20},245 ${tx-24},270 ${tx-27},295" fill="none" stroke="${C.steel}" stroke-width="12"/>
-    <path d="M${tx},130 C${tx-1},170 ${tx-8},208 ${tx-20},245 ${tx-24},270 ${tx-27},295" fill="none" stroke="${C.dark}" stroke-width="1.5"/>
-    <path d="M${tx-27},295 C${tx-35},315 ${tx-26},328 ${tx-12},325" fill="none" stroke="${C.steel}" stroke-width="12"/>
-    <path d="M${tx-27},295 C${tx-35},315 ${tx-26},328 ${tx-12},325" fill="none" stroke="${C.dark}" stroke-width="1.5"/>
-    <circle cx="${tx-22}" cy="322" r="5" fill="${C.dark}"/>
-    <line x1="${tx-20}" y1="326" x2="${tx-18}" y2="370" stroke="#9a8060" stroke-width="1"/>
-  `).join('')}
-  ${gnd(80,370,600)}
-  ${dh(140,620,74,'45 cm')}
-  <line x1="140" y1="74" x2="140" y2="90" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="620" y1="74" x2="620" y2="90" stroke="${C.dim}" stroke-width="1"/>
-  ${dh(190,330,78,'14 cm sep.')}
-  ${dv(118,130,295,'16.5cm','left')}
-  <line x1="118" y1="130" x2="140" y2="130" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="118" y1="295" x2="163" y2="295" stroke="${C.dim}" stroke-width="1"/>
-  ${lbl(635,130,'Grapa M8\n×3 total')}
-  ${lbl(635,220,'Diente Ø12mm\nmuelle 65Mn\nL=320mm')}
-  ${lbl(635,305,'Gancho tip\nacero duro')}
-  ${note('Varilla muelle 65Mn: cede al golpear piedras sin romperse',400)}
-`);}
-
-function cultLateral(){return wrap(`${hdr('CULTIVADOR — Vista lateral','Perfil del diente curvado y profundidad de trabajo')}
-  <rect x="290" y="44" width="180" height="20" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-  <rect x="348" y="64" width="64" height="44" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5"/>
-  <rect x="356" y="108" width="48" height="20" fill="#2a6a4a" stroke="${C.dark}" stroke-width="1.5"/>
-  <path d="M380,128 C378,168 370,205 360,245 352,275 350,300 352,320" fill="none" stroke="${C.steel}" stroke-width="18"/>
-  <path d="M380,128 C378,168 370,205 360,245 352,275 350,300 352,320" fill="none" stroke="${C.dark}" stroke-width="2"/>
-  <path d="M352,320 C344,338 352,352 368,348" fill="none" stroke="${C.steel}" stroke-width="18"/>
-  <path d="M352,320 C344,338 352,352 368,348" fill="none" stroke="${C.dark}" stroke-width="2"/>
-  <circle cx="358" cy="345" r="7" fill="${C.dark}"/>
-  ${gnd(80,375,600)}
-  <line x1="360" y1="345" x2="362" y2="375" stroke="#9a8060" stroke-width="2"/>
-  <line x1="80" y1="345" x2="680" y2="345" stroke="${C.dim}" stroke-width="1" stroke-dasharray="5,4" opacity=".5"/>
-  <text x="90" y="338" font-size="9.5" fill="${C.dim}">Profundidad trabajo</text>
-  ${dv(100,108,345,'23cm','left')}
-  <line x1="100" y1="108" x2="356" y2="108" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="100" y1="345" x2="344" y2="345" stroke="${C.dim}" stroke-width="1"/>
-  <rect x="430" y="108" width="200" height="220" fill="white" stroke="#2a6a4a" stroke-width="1.5" rx="5"/>
-  <rect x="430" y="108" width="200" height="20" fill="#2a6a4a" rx="5"/>
-  <text x="530" y="122" font-size="10" fill="white" text-anchor="middle">PERFIL DIENTE</text>
-  <path d="M530,148 C528,188 520,222 508,255 500,278 498,295 500,312" fill="none" stroke="${C.steel}" stroke-width="14"/>
-  <path d="M530,148 C528,188 520,222 508,255 500,278 498,295 500,312" fill="none" stroke="${C.dark}" stroke-width="1.5"/>
-  <path d="M500,312 C492,328 500,340 514,336" fill="none" stroke="${C.steel}" stroke-width="14"/>
-  <circle cx="506" cy="334" r="6" fill="${C.dark}"/>
-  <text x="524" y="160" font-size="9" fill="${C.dark}">① Eje recto</text>
-  <text x="524" y="230" font-size="9" fill="${C.dark}">② Curva</text>
-  <text x="524" y="310" font-size="9" fill="${C.dark}">③ Gancho</text>
-  <line x1="524" y1="160" x2="530" y2="155" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="524" y1="230" x2="515" y2="235" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="524" y1="310" x2="510" y2="318" stroke="${C.dim}" stroke-width="1"/>
-  ${note('El gancho final engancha la hierba. Sin gancho solo la empuja.',400)}
-`);}
-
-function cultDetalle(){return wrap(`${hdr('CULTIVADOR — Detalle de piezas y ensamblaje','Grapa de sujeción + pasador + medidas exactas')}
-  <text x="200" y="55" font-size="12" fill="${C.dark}" text-anchor="middle" font-weight="800">GRAPA SUJECIÓN</text>
-  <rect x="90" y="68" width="220" height="14" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  <rect x="150" y="82" width="100" height="40" fill="none" stroke="${C.steel}" stroke-width="12"/>
-  <rect x="150" y="82" width="100" height="40" fill="none" stroke="${C.dark}" stroke-width="2"/>
-  <rect x="188" y="120" width="24" height="80" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  <text x="90" y="175" font-size="10" fill="${C.dark}">Pletina 40×4mm</text>
-  <text x="90" y="188" font-size="10" fill="${C.dark}">doblada en U</text>
-  ${dv(70,82,200,'12cm','left')}
-  <line x1="70" y1="82" x2="90" y2="82" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="70" y1="200" x2="188" y2="200" stroke="${C.dim}" stroke-width="1"/>
-  <text x="400" y="55" font-size="12" fill="${C.dark}" text-anchor="middle" font-weight="800">PASADOR Ø16 + CHAVETA</text>
-  <rect x="300" y="70" width="200" height="16" fill="${C.yel}" stroke="${C.dark}" stroke-width="2" rx="3"/>
-  <ellipse cx="300" cy="78" rx="12" ry="12" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  <ellipse cx="300" cy="78" rx="5" ry="5" fill="${C.dark}"/>
-  <line x1="496" y1="60" x2="500" y2="76" stroke="${C.red}" stroke-width="3"/>
-  <text x="310" y="106" font-size="10" fill="${C.dark}">Ø16mm · L=80mm</text>
-  <text x="310" y="120" font-size="10" fill="${C.dark}">Acero galvanizado</text>
-  <text x="310" y="140" font-size="11" fill="${C.red}" font-weight="700">← Chaveta retención</text>
-  <text x="50" y="240" font-size="12" fill="${C.dark}" font-weight="800">TABLA DE MEDIDAS</text>
-  ${[['Barra porta-dientes','450 × 40 × 30 × 2 mm','Acero S235','×1'],
-     ['Diente curvado Ø12mm','L = 320 mm','Acero muelle 65Mn','×3'],
-     ['Gancho tip 6mm','40 × 25 mm','Acero duro 400','×3'],
-     ['Grapa en U 4mm','40 × 40 mm','Acero S235','×3'],
-     ['Rastra enganche','200 × 40 × 40 × 3 mm','Acero S235','×1'],
-     ['Perno M8 grapa','M8 × 40mm + contrat.','Galvanizado','×3'],
-     ['Pasador Ø16mm','L=80mm + chaveta','Acero galv.','×2'],
-  ].map(([p,m,mat,q],i)=>{const y=258+i*22;return `
-    <rect x="30" y="${y}" width="700" height="21" fill="${i%2===0?'#f8f7f3':'white'}" stroke="#e0ddd4" stroke-width=".5"/>
-    <text x="38" y="${y+14}" font-size="10" fill="${C.blue}" font-weight="700">${p}</text>
-    <text x="240" y="${y+14}" font-size="10" fill="${C.dark}">${m}</text>
-    <text x="460" y="${y+14}" font-size="10" fill="${C.mid}">${mat}</text>
-    <text x="700" y="${y+14}" font-size="10" fill="${C.red}" font-weight="700" text-anchor="end">${q}</text>
-  `}).join('')}
-`,760,420);}
-
-// ── APORCADOR VIEWS ──
-function aporcFrontal(){return wrap(`${hdr('APORCADOR EN V — Vista frontal','Alas regulables 20-48 cm')}
-  <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-  <circle cx="352" cy="53" r="5" fill="${C.dark}"/><circle cx="408" cy="53" r="5" fill="${C.dark}"/>
-  <rect x="366" y="62" width="28" height="100" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  ${[86,105,124].map(y=>`<circle cx="380" cy="${y}" r="4" fill="${C.dark}" opacity=".4"/>`).join('')}
-  <polygon points="380,162 348,210 348,258 380,278 412,258 412,210" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2.5"/>
-  <polygon points="380,174 362,205 380,218 398,205" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5"/>
-  <polygon points="348,215 210,246 210,315 348,272" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-  <polygon points="412,215 550,246 550,315 412,272" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-  <circle cx="248" cy="250" r="8" fill="${C.yel}" stroke="${C.dark}" stroke-width="2"/>
-  <circle cx="512" cy="250" r="8" fill="${C.yel}" stroke="${C.dark}" stroke-width="2"/>
-  ${gnd(80,372,600)}
-  <polygon points="130,372 200,372 165,340" fill="${C.gnd}" opacity=".9"/>
-  <polygon points="560,372 630,372 595,340" fill="${C.gnd}" opacity=".9"/>
-  <polygon points="332,372 380,398 428,372" fill="#3a2810" stroke="${C.gnd}" stroke-width="1"/>
-  ${dh(210,550,300,'20-48 cm (regulable)')}
-  <line x1="210" y1="300" x2="210" y2="315" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="550" y1="300" x2="550" y2="315" stroke="${C.dim}" stroke-width="1"/>
-  ${lbl(560,244,'Perno M10\n+ mariposa')}
-  ${note('Patatas: 35-40cm · Maíz/tomate: 25-30cm · Alas de 3mm: doblar en frío',395)}
-`);}
-
-function aporcLateral(){return wrap(`${hdr('APORCADOR EN V — Vista lateral','Perfil del cuerpo en V y profundidad')}
-  <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-  <rect x="366" y="62" width="28" height="100" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  <polygon points="380,162 340,220 340,270 380,288 420,270 420,220" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2.5"/>
-  <polygon points="340,225 180,260 180,330 340,278" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-  ${gnd(80,372,600)}
-  <polygon points="130,372 180,372 155,345" fill="${C.gnd}" opacity=".9"/>
-  <polygon points="560,372 610,372 585,345" fill="${C.gnd}" opacity=".9"/>
-  <line x1="80" y1="345" x2="680" y2="345" stroke="${C.dim}" stroke-width="1" stroke-dasharray="4,4" opacity=".6"/>
-  <text x="90" y="338" font-size="9.5" fill="${C.dim}">nivel suelo</text>
-  ${dv(100,62,162,'10cm','left')}
-  <line x1="100" y1="62" x2="366" y2="62" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="100" y1="162" x2="340" y2="162" stroke="${C.dim}" stroke-width="1"/>
-  ${dv(100,162,345,'18cm','left')}
-  <line x1="100" y1="345" x2="340" y2="345" stroke="${C.dim}" stroke-width="1"/>
-  <rect x="440" y="120" width="260" height="220" fill="white" stroke="#2a6a4a" stroke-width="1.5" rx="5"/>
-  <rect x="440" y="120" width="260" height="20" fill="#2a6a4a" rx="5"/>
-  <text x="570" y="134" font-size="10" fill="white" text-anchor="middle">SECCIÓN TRABAJO</text>
-  ${gnd(448,305,244,28)}
-  <polygon points="510,305 570,332 630,305" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-  <polygon points="460,305 510,305 484,280" fill="${C.gndl}" opacity=".8"/>
-  <polygon points="630,305 680,305 656,280" fill="${C.gndl}" opacity=".8"/>
-  <text x="570" y="322" font-size="9.5" fill="white" text-anchor="middle">surco aporque</text>
-  ${note('El cuerpo en V empuja tierra desde los lados hacia la raíz de la planta',395)}
-`);}
-
-function aporcDetalle(){return wrap(`${hdr('APORCADOR — Detalle regulación de alas','Sistema de ranura y perno M10 mariposa')}
-  <text x="200" y="52" font-size="12" fill="${C.dark}" text-anchor="middle" font-weight="800">ALA REGULABLE</text>
-  <rect x="60" y="65" width="280" height="120" fill="${C.steel}" stroke="${C.dark}" stroke-width="2" rx="4"/>
-  <rect x="100" y="85" width="200" height="12" fill="white" stroke="${C.dark}" stroke-width="1" rx="2"/>
-  <text x="105" y="95" font-size="9" fill="${C.dark}">Ranura L=120mm</text>
-  <circle cx="200" cy="95" r="9" fill="${C.yel}" stroke="${C.dark}" stroke-width="2"/>
-  <text x="212" y="99" font-size="9" fill="${C.dark}">M10</text>
-  <text x="68" y="136" font-size="10" fill="${C.dark}" font-weight="700">20cm</text>
-  <text x="68" y="152" font-size="10" fill="${C.dark}" font-weight="700">15cm</text>
-  ${dh(60,340,168,'Posiciones: 20–48 cm total')}
-  <text x="200" y="260" font-size="12" fill="${C.dark}" text-anchor="middle" font-weight="800">TABLA DE MEDIDAS</text>
-  ${[['Brazo de enganche','300 × 40 × 40 × 3 mm','Acero S235','×1'],
-     ['Plancha cuña cuerpo V','200 × 150 × 4 mm','Acero S235','×2'],
-     ['Ala regulable','200 × 150 × 3 mm + ranura','Acero S235','×2'],
-     ['Tope profundidad','300 × 30 × 5 mm perforada','Pletina acero','×1'],
-     ['Perno ala M10×80','M10 × 80mm + mariposa','Galvanizado','×2'],
-     ['Pasador Ø16mm','L=80mm + chaveta','Acero galv.','×2'],
-  ].map(([p,m,mat,q],i)=>{const y=272+i*22;return `
-    <rect x="30" y="${y}" width="700" height="21" fill="${i%2===0?'#f8f7f3':'white'}" stroke="#e0ddd4" stroke-width=".5"/>
-    <text x="38" y="${y+14}" font-size="10" fill="${C.blue}" font-weight="700">${p}</text>
-    <text x="240" y="${y+14}" font-size="10" fill="${C.dark}">${m}</text>
-    <text x="460" y="${y+14}" font-size="10" fill="${C.mid}">${mat}</text>
-    <text x="700" y="${y+14}" font-size="10" fill="${C.red}" font-weight="700" text-anchor="end">${q}</text>
-  `}).join('')}
-  ${note('Alas 3mm se doblan en frío. Doblar con martillo sobre yunque sin prensa.',400)}
-`,760,420);}
-
-// ── SURCADOR SIMPLE VIEWS ──
-function surcFrontal(){return wrap(`${hdr('SURCADOR SIMPLE — Vista frontal','Cuchilla en V · Ancho surco 8-15 cm')}
-  <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-  <circle cx="352" cy="53" r="5" fill="${C.dark}"/><circle cx="408" cy="53" r="5" fill="${C.dark}"/>
-  <rect x="366" y="62" width="28" height="170" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  ${[90,120,150,180].map(y=>`<circle cx="380" cy="${y}" r="4" fill="${C.dark}" opacity=".4"/>`).join('')}
-  <polygon points="366,232 394,232 394,254 440,308 440,320 380,338 320,320 320,308 366,254" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-  <line x1="366" y1="235" x2="320" y2="320" stroke="${C.wh}" stroke-width="3"/>
-  <line x1="394" y1="235" x2="440" y2="320" stroke="${C.wh}" stroke-width="3"/>
-  <polygon points="365,316 395,316 380,338" fill="${C.dark}"/>
-  ${gnd(80,372,600)}
-  <polygon points="336,372 380,396 424,372" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-  <text x="358" y="390" font-size="9.5" fill="white">SURCO</text>
-  ${dv(100,62,232,'17cm','left')}
-  <line x1="100" y1="62" x2="366" y2="62" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="100" y1="232" x2="366" y2="232" stroke="${C.dim}" stroke-width="1"/>
-  <rect x="510" y="200" width="200" height="150" fill="white" stroke="#1e5a3a" stroke-width="1.5" rx="5"/>
-  <rect x="510" y="200" width="200" height="18" fill="#1e5a3a" rx="5"/>
-  <text x="610" y="212" font-size="10" fill="white" text-anchor="middle">SECCIÓN SURCO</text>
-  ${gnd(518,320,184,26)}
-  <polygon points="568,320 610,344 652,320" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-  ${dh(568,652,348,'8-15 cm','bottom')}
-  <line x1="568" y1="348" x2="568" y2="332" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="652" y1="348" x2="652" y2="332" stroke="${C.dim}" stroke-width="1"/>
-  ${lbl(410,230,'Reg. prof.\nM10 mariposa')}
-  ${note('Cuchilla 6mm suelo normal · 8mm si hay piedras · cada agujero = ~3cm',395)}
-`);}
-
-function surcLateral(){return wrap(`${hdr('SURCADOR SIMPLE — Vista lateral','Perfil del brazo curvado y ángulo de ataque')}
-  <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-  <line x1="380" y1="62" x2="415" y2="280" stroke="${C.steel}" stroke-width="20"/>
-  <line x1="380" y1="62" x2="415" y2="280" stroke="${C.dark}" stroke-width="2"/>
-  ${[100,138,176,214,252].map((y,i)=>{const x=380+i*7;return `<circle cx="${x}" cy="${y}" r="5" fill="${C.dark}" opacity=".4"/>`;}).join('')}
-  <polygon points="410,275 422,275 422,298 468,350 468,362 413,380 358,362 358,350 404,298" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-  <line x1="410" y1="278" x2="358" y2="362" stroke="${C.wh}" stroke-width="2.5"/>
-  <line x1="422" y1="278" x2="468" y2="362" stroke="${C.wh}" stroke-width="2.5"/>
-  <polygon points="410,358 416,358 413,378" fill="${C.dark}"/>
-  ${gnd(80,372,600)}
-  <polygon points="368,372 413,396 458,372" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-  <path d="M 360,275 A 30,30 0 0 1 380,248" stroke="${C.red}" stroke-width="1.5" fill="none"/>
-  <text x="330" y="262" font-size="10" fill="${C.red}" font-weight="700">~15°</text>
-  ${dv(90,62,275,'21cm','left')}
-  <line x1="90" y1="62" x2="380" y2="62" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="90" y1="275" x2="410" y2="275" stroke="${C.dim}" stroke-width="1"/>
-  ${note('Ángulo de ataque ~15°. Ajustar con el perno de regulación de profundidad',395)}
-`);}
-
-// ── RODILLO VIEWS ──
-function rodFrontal(){return wrap(`${hdr('RODILLO COMPACTADOR — Vista frontal','Ø20cm × 55cm · Peso regulable 8-25 kg')}
-  <rect x="170" y="38" width="420" height="20" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2"/>
-  <text x="380" y="51" font-size="9.5" fill="white" text-anchor="middle">Barra enganche 60cm · 40×40×3mm</text>
-  <rect x="158" y="58" width="20" height="120" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  <rect x="582" y="58" width="20" height="120" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-  <rect x="148" y="175" width="464" height="20" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-  <rect x="160" y="192" width="440" height="175" fill="#a8b8c8" stroke="${C.dark}" stroke-width="3"/>
-  <rect x="168" y="255" width="424" height="106" fill="#5a88c0" stroke="#3a68a0" stroke-width="1.5" opacity=".9"/>
-  <text x="380" y="300" font-size="14" fill="white" text-anchor="middle" font-weight="800">AGUA</text>
-  <text x="380" y="318" font-size="10" fill="#c0d8ff" text-anchor="middle">peso ajustable</text>
-  <ellipse cx="160" cy="279" rx="20" ry="87" fill="${C.steel}" stroke="${C.dark}" stroke-width="3"/>
-  <ellipse cx="600" cy="279" rx="20" ry="87" fill="${C.steel}" stroke="${C.dark}" stroke-width="3"/>
-  <rect x="600" y="266" width="26" height="26" fill="${C.yel}" stroke="${C.dark}" stroke-width="2" rx="3"/>
-  <text x="634" y="282" font-size="9.5" fill="${C.dark}">Tapón 1"</text>
-  <line x1="140" y1="279" x2="618" y2="279" stroke="${C.dark}" stroke-width="4"/>
-  ${Array.from({length:10},(_,i)=>`<line x1="${198+i*42}" y1="194" x2="${198+i*42}" y2="365" stroke="#8a9ab0" stroke-width="1"/>`).join('')}
-  ${gnd(80,368,600)}
-  <rect x="30" y="80" width="110" height="72" fill="white" stroke="#2a6a4a" stroke-width="1.5" rx="4"/>
-  <rect x="30" y="80" width="110" height="18" fill="#2a6a4a" rx="4"/>
-  <text x="85" y="92" font-size="9.5" fill="white" text-anchor="middle">PESOS</text>
-  <text x="38" y="112" font-size="9.5" fill="${C.dark}">Vacío: ~8 kg</text>
-  <text x="38" y="126" font-size="9.5" fill="${C.dark}">50%: ~16 kg</text>
-  <text x="38" y="140" font-size="10.5" fill="#1e5a3a" font-weight="800">Lleno: ~25 kg</text>
-  ${dh(160,600,358,'55 cm')}
-  <line x1="160" y1="358" x2="160" y2="368" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="600" y1="358" x2="600" y2="368" stroke="${C.dim}" stroke-width="1"/>
-  ${dv(95,192,366,'Ø20cm','left')}
-  <line x1="95" y1="192" x2="160" y2="192" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="95" y1="366" x2="160" y2="366" stroke="${C.dim}" stroke-width="1"/>
-  ${note('Cilindro: bidón PVC 60L (~5€). Tapón 1" para llenar/vaciar y ajustar el peso.',390)}
-`);}
-
-function rodSeccion(){return wrap(`${hdr('RODILLO — Sección transversal','Detalle interior del cilindro con agua')}
-  <circle cx="380" cy="210" r="155" fill="#a8b8c8" stroke="${C.dark}" stroke-width="4"/>
-  <path d="M225,210 A155,155 0 1 1 535,210" fill="#5a88c0" stroke="none"/>
-  <circle cx="380" cy="210" r="155" fill="none" stroke="${C.dark}" stroke-width="4"/>
-  <circle cx="380" cy="210" r="142" fill="none" stroke="#8a9ab0" stroke-width="1.5"/>
-  <text x="380" y="195" font-size="18" fill="white" text-anchor="middle" font-weight="900">AGUA</text>
-  <text x="380" y="218" font-size="12" fill="#c0d8ff" text-anchor="middle">~65% lleno</text>
-  <circle cx="380" cy="210" r="14" fill="${C.dark}" stroke="${C.steel}" stroke-width="2"/>
-  <circle cx="380" cy="210" r="6" fill="#c0d0e0"/>
-  <text x="380" y="252" font-size="10" fill="${C.dark}" text-anchor="middle">Eje central Ø25mm</text>
-  <line x1="380" y1="244" x2="380" y2="222" stroke="${C.dim}" stroke-width="1"/>
-  ${dh(225,535,385,'Ø 20 cm = 200mm')}
-  <line x1="225" y1="385" x2="225" y2="365" stroke="${C.dim}" stroke-width="1"/>
-  <line x1="535" y1="385" x2="535" y2="365" stroke="${C.dim}" stroke-width="1"/>
-  <text x="60" y="220" font-size="11" fill="${C.dark}" font-weight="700">Chapa</text>
-  <text x="60" y="235" font-size="11" fill="${C.dark}" font-weight="700">t = 4mm</text>
-  <line x1="100" y1="225" x2="225" y2="210" stroke="${C.dim}" stroke-width="1"/>
-  <text x="615" y="135" font-size="10" fill="${C.dark}">Tapa lateral</text>
-  <text x="615" y="150" font-size="10" fill="${C.dark}">disco 4mm</text>
-  <text x="615" y="165" font-size="10" fill="${C.dark}">Ø200mm</text>
-  ${note('Llenar con agua por el tapón rosca 1". Pesar el conjunto antes de trabajar.',395)}
-`);}
-
-// ── GENERIC SIMPLE VIEWS for other implements ──
-function genericFrontal(name,sub,svgBody){return wrap(`${hdr(name+' — Vista frontal',sub)}${svgBody}`);}
-function genericLateral(name,sub,svgBody){return wrap(`${hdr(name+' — Vista lateral',sub)}${svgBody}`);}
-function genericDetalle(name,rows){return wrap(`${hdr(name+' — Medidas y materiales','Tabla completa de piezas')}
-  <text x="380" y="52" font-size="11" fill="${C.dark}" text-anchor="middle" font-weight="800">TABLA DE PIEZAS Y MATERIALES</text>
-  <rect x="28" y="60" width="704" height="20" fill="${C.dark}" rx="3"/>
-  <text x="38" y="74" font-size="10" fill="${C.yel}" font-weight="800">PIEZA</text>
-  <text x="240" y="74" font-size="10" fill="white" font-weight="800">MEDIDA EXACTA</text>
-  <text x="450" y="74" font-size="10" fill="white" font-weight="800">MATERIAL</text>
-  <text x="680" y="74" font-size="10" fill="white" font-weight="800" text-anchor="end">CANT.</text>
-  ${rows.map(([p,m,mat,q],i)=>{const y=82+i*22;return `
-    <rect x="28" y="${y}" width="704" height="21" fill="${i%2===0?'#f8f7f3':'white'}" stroke="#e0ddd4" stroke-width=".5"/>
-    <text x="36" y="${y+14}" font-size="10" fill="${C.blue}" font-weight="700">${p}</text>
-    <text x="238" y="${y+14}" font-size="10" fill="${C.dark}">${m}</text>
-    <text x="448" y="${y+14}" font-size="10" fill="${C.mid}">${mat}</text>
-    <text x="700" y="${y+14}" font-size="10" fill="${C.red}" font-weight="700" text-anchor="end">${q}</text>
-  `}).join('')}
-`,760,420);}
-
-// ── ALL APEROS DATA ──
 const APEROS=[
-  {id:1,base:0,icon:'🪝',name:'Cultivador de ganchos',
-   uso:'Escardar y airear el suelo entre líneas de cultivo. Los dientes curvados cortan y arrancan las malas hierbas sin voltear el suelo.',
-   cuando:'Cada 2-3 semanas durante el cultivo, o cuando aparezcan malas hierbas. Mejor con suelo ligeramente húmedo.',
-   como:['Ajusta la profundidad (5-12cm) con el perno M8 de regulación.','Avanza a velocidad lenta entre las líneas de cultivo.','Los dientes curvados enganchan y cortan las hierbas a nivel de raíz.','Para cultivos juntos: quita el diente central y trabaja con 2.','Afila los ganchos cada 8-10h con amoladora.'],
-   cultivos:'Patatas, maíz, tomate, pimiento, judías, girasol, cebolla.',
-   dif:1,cost:'~9 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:cultFrontal},{label:'Vista lateral',svg:cultLateral},{label:'Medidas y piezas',svg:cultDetalle}],
-   shop:[['Tubo 40×30×2mm · 45cm (barra)','0,45m','~1 €','Ferretería'],['Varilla muelle 65Mn Ø12mm · 96cm','0,96m','~3 €','Chatarrero'],['Plancha 6mm · 12×8cm (ganchos)','~0,10m²','~1,5 €','Almacén acero'],['Pletina 40×4mm doblada en U (grapas)','0,20m','~0,8 €','Ferretería'],['Tubo 40×40×3mm · 20cm (rastra)','0,20m','~0,7 €','Ferretería'],['Pernos M8×40mm + contratuerca','×3','~0,6 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Varilla muelle 65Mn: cede al golpear piedras sin romperse.','El gancho en la punta es esencial: sin él solo empuja la hierba.']},
-
-  {id:2,base:0,icon:'🔻',name:'Aporcador en V',
+  {id:1,base:0,icon:'🪝',name:'Cultivador de ganchos',dif:1,cost:'~9€',tiempo:'½ tarde',
+   uso:'Escardar y airear el suelo entre líneas de plantas. Los 3 dientes curvados cortan y arrancan malas hierbas sin voltear la tierra.',
+   cuando:'Cada 2-3 semanas durante el cultivo. Mejor con suelo ligeramente húmedo.',
+   como:['Ajusta profundidad (5-12cm) con perno M8','Avanza lentamente entre las líneas','Los dientes enganchan y cortan hierbas a nivel de raíz','Para cultivos juntos: trabaja con 2 dientes','Afila los ganchos cada 8-10h con amoladora'],
+   cultivos:'Patatas, maíz, tomate, pimiento, judías, girasol, cebolla',
+   materiales:[['Tubo 40×30×2mm','450mm','Acero S235','×1'],['Varilla muelle 65Mn Ø12mm','3×320mm','Acero muelle','×3'],['Plancha 6mm (ganchos)','12×8cm','Acero duro','×3'],['Pletina 40×4mm (grapas)','20cm','Acero S235','×1'],['Tubo 40×40×3mm (rastra)','200mm','Acero S235','×1'],['Pernos M8×40mm','×3','~0,6€',''],['Pasadores Ø16mm+chaveta','×2','~1,2€','']]},
+  {id:2,base:0,icon:'🔻',name:'Aporcador en V',dif:2,cost:'~13€',tiempo:'½ tarde',
    uso:'Echar tierra a ambos lados de la planta para cubrir raíces, aguantar el tallo y crear canal de riego.',
-   cuando:'Con plantas de 15-25cm de altura. Patatas: 1-2 veces. Maíz: una sola vez.',
-   como:['Ajusta las alas al ancho deseado (20-48cm) aflojando el perno M10.','Centra el apero sobre la línea de cultivo.','Avanza despacio para que el V abra bien el suelo.','Las alas empujan tierra desde los lados hacia el centro.','Patatas: ala a 35-40cm. Maíz/tomate: 25-30cm.'],
-   cultivos:'Patatas, maíz, girasol, tomate, pimiento, berenjena.',
-   dif:2,cost:'~13 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:aporcFrontal},{label:'Vista lateral',svg:aporcLateral},{label:'Medidas y piezas',svg:aporcDetalle}],
-   shop:[['Tubo 40×40×3mm · 50cm (brazo+rastra)','0,50m','~1,8 €','Ferretería'],['Plancha 4mm · 30×30cm (cuerpo V)','30×30cm','~5 €','Almacén acero'],['Plancha 3mm · 2×20×15cm (alas)','30×20cm','~3 €','Almacén acero'],['Pletina 30×5mm · 30cm (tope prof.)','0,30m','~0,8 €','Ferretería'],['Pernos M10×80mm + mariposa','×2','~1 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Alas 3mm: doblar en frío con martillo y yunque.','Cumple 3 funciones: cubre raíces, elimina hierbas y crea canal de agua.']},
-
-  {id:3,base:0,icon:'〽️',name:'Surcador simple',
-   uso:'Abrir un surco limpio en V para depositar semillas o tubérculos a profundidad controlada.',
-   cuando:'Justo antes de sembrar o plantar. Para hacer surcos paralelos rápidamente.',
-   como:['Regula la profundidad (5-18cm) con los agujeros del brazo.','Avanza a velocidad constante para un surco uniforme.','La cuchilla en V separa el suelo sin romper la estructura.','Después: deposita la semilla y cubre manualmente o con tapador.'],
-   cultivos:'Patatas, cebollas, ajos, zanahorias, maíz, judías, guisantes.',
-   dif:1,cost:'~7,3 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:surcFrontal},{label:'Vista lateral',svg:surcLateral},{label:'Medidas y piezas',svg:()=>genericDetalle('SURCADOR SIMPLE',[['Brazo curvado (40×40×3)','350mm','Acero S275','×1'],['Cuchilla en V (6mm)','200×200mm','Acero duro 400','×1'],['Rastra enganche (40×40×3)','200mm','Acero S235','×1'],['Perno reg. prof. M10×60','M10×60mm + mariposa','Galvanizado','×1'],['Tornillo cuchilla M10×40','M10×40mm + tuerca','Galvanizado','×2'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm S275 · 55cm','0,55m','~2 €','Ferretería'],['Plancha 6mm · 20×20cm (cuchilla V)','20×20cm','~3 €','Almacén acero'],['Perno M10×60mm + mariposa','×1','~0,5 €','Ferretería'],['Pernos M10×40mm + tuerca','×2','~0,6 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Cuchilla 6mm suelo normal · 8mm si hay piedras.','Cada agujero del brazo equivale a ~3cm de profundidad.']},
-
-  {id:4,base:0,icon:'〽〽',name:'Surcador doble',
-   uso:'Abrir dos surcos paralelos simultáneamente. Separación fija 18cm. Ahorra una pasada.',
+   cuando:'Con plantas de 15-25cm. Patatas: 1-2 veces. Maíz: una sola vez.',
+   como:['Ajusta alas (20-48cm) con perno M10 mariposa','Centra el apero sobre la línea de plantas','Patatas: ala 35-40cm · Maíz/tomate: 25-30cm','Avanza a velocidad constante'],
+   cultivos:'Patatas, maíz, girasol, tomate, pimiento, berenjena',
+   materiales:[['Tubo 40×40×3mm','50cm','Acero S235','×1'],['Plancha 4mm (cuerpo V)','2×200×150mm','Acero S235','×2'],['Plancha 3mm (alas)','2×200×150mm','Acero S235','×2'],['Pletina 30×5mm (tope)','30cm','Acero S235','×1'],['Pernos M10×80mm+mariposa','×2','~1€','']]},
+  {id:3,base:0,icon:'〽️',name:'Surcador simple',dif:1,cost:'~7,3€',tiempo:'½ tarde',
+   uso:'Abrir un surco limpio en V para depositar semillas o tubérculos a profundidad controlada y uniforme.',
+   cuando:'Justo antes de sembrar o plantar. Regula profundidad con los agujeros.',
+   como:['Regula profundidad (5-18cm) con agujeros del brazo','Avanza a velocidad constante','Cada agujero = ~3cm de profundidad','Después: deposita semilla y cubre con tierra'],
+   cultivos:'Patatas, cebollas, ajos, zanahorias, maíz, judías, guisantes',
+   materiales:[['Tubo 40×40×3mm','55cm','Acero S275','×1'],['Plancha 6mm (cuchilla V)','200×200mm','Acero duro 400','×1'],['Tubo 40×40×3mm (rastra)','20cm','Acero S235','×1'],['Perno M10×60mm+mariposa','×1','~0,5€','']]},
+  {id:4,base:0,icon:'〽〽',name:'Surcador doble',dif:2,cost:'~12€',tiempo:'½ tarde',
+   uso:'Abrir dos surcos paralelos simultáneamente. Separación fija 18cm. Ahorra una pasada completa.',
    cuando:'Siembras en líneas dobles: judías, guisantes, lechuga.',
-   como:['La separación entre surcos es fija a 18cm.','Nivelar bien la mulilla antes de empezar.','Avanza más despacio que con el surcador simple.','Verificar que ambas cuchillas estén a la misma profundidad.'],
-   cultivos:'Judías, guisantes, lechuga, espinaca, remolacha en línea doble.',
-   dif:2,cost:'~12 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:()=>genericFrontal('SURCADOR DOBLE','2 surcos simultáneos · Separación 18cm',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="200" y="88" width="360" height="20" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2"/>
-     <text x="380" y="101" font-size="9.5" fill="white" text-anchor="middle">Travesaño 36cm · 40×8mm</text>
-     ${[290,470].map((ax,i)=>{const s=i===0?-1:1;return `
-       <rect x="${ax-12}" y="108" width="24" height="22" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5"/>
-       <line x1="${ax}" y1="130" x2="${ax+s*14}" y2="295" stroke="${C.steel}" stroke-width="16"/>
-       <line x1="${ax}" y1="130" x2="${ax+s*14}" y2="295" stroke="${C.dark}" stroke-width="2"/>
-       <polygon points="${ax+s*14-7},290 ${ax+s*14+7},290 ${ax+s*14+7},313 ${ax+s*14+46*s},360 ${ax+s*14+46*s},372 ${ax+s*14},390 ${ax+s*14-46*s},372 ${ax+s*14-46*s},360 ${ax+s*14-7},313" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-       <line x1="${ax+s*14-7}" y1="293" x2="${ax+s*14-46*s}" y2="372" stroke="${C.wh}" stroke-width="2.5"/>
-       <polygon points="${ax+s*14-7},368 ${ax+s*14+7},368 ${ax+s*14}" fill="${C.dark}"/>
-     `;}).join('')}
-     ${gnd(80,372,600)}
-     <polygon points="250,372 290,396 330,372" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-     <polygon points="430,372 470,396 510,372" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-     <text x="265" y="390" font-size="9" fill="white">SURCO 1</text>
-     <text x="445" y="390" font-size="9" fill="white">SURCO 2</text>
-     ${dh(200,560,72,'36cm travesaño')}
-     ${dh(290,470,78,'18 cm sep.')}
-     ${note('Sep. modificable cambiando la longitud del travesaño',395)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('SURCADOR DOBLE',[['Brazo curvado (×2) 40×40×3','350mm c/u','Acero S275','×2'],['Cuchilla en V 6mm (×2)','180×180mm c/u','Acero duro 400','×2'],['Travesaño 40×8mm','360mm + ranura','Pletina acero','×1'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Perno sujeción travesaño M10×60','M10×60mm + mariposa','Galvanizado','×2'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm S275 · 1,10m','1,10m','~4 €','Ferretería'],['Plancha 6mm · 2×18×18cm (2 cuchillas)','2 piezas','~5 €','Almacén acero'],['Pletina 40×8mm · 36cm (travesaño)','0,36m','~1 €','Ferretería'],['Pernos M10×60mm + mariposa','×2','~1 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Fabricar 2 brazos iguales al surcador simple + travesaño que los une.','Sep. modificable cambiando la longitud del travesaño.']},
-
-  {id:5,base:0,icon:'✂️',name:'Escardador',
-   uso:'Cortar malas hierbas a ras de raíz en toda la superficie sin voltear el suelo. Cuchilla casi horizontal.',
-   cuando:'Entre pasadas de cultivo cuando las hierbas son pequeñas (2-5cm).',
-   como:['Ajusta el ángulo a 5-8° (casi horizontal) con el perno.','Profundidad solo 3-6cm. Más hondo daña las raíces del cultivo.','Avanza lento para que la cuchilla corte limpiamente.','Afilar el filo delantero cada 5-8h. Ángulo de afilado 25-30°.'],
-   cultivos:'Cualquier cultivo en campo abierto donde las malas hierbas sean el problema.',
-   dif:1,cost:'~8 €',time:'½ tarde',
-   views:[{label:'Vista lateral',svg:()=>genericFrontal('ESCARDADOR','Vista lateral · Cuchilla 55cm casi horizontal',`
-     <rect x="282" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="322" y="62" width="18" height="140" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     ${[88,112,136].map(y=>`<circle cx="331" cy="${y}" r="4" fill="${C.dark}" opacity=".4"/>`).join('')}
-     <rect x="90" y="195" width="380" height="16" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-     <line x1="90" y1="211" x2="470" y2="211" stroke="${C.wh}" stroke-width="3"/>
-     <polygon points="90,211 90,340 470,340 470,211 458,216 102,216" fill="#5a3a20" opacity=".7"/>
-     ${gnd(80,338,540)}
-     <text x="285" y="358" font-size="10" fill="white" text-anchor="middle">SUELO CORTADO</text>
-     ${dh(90,470,175,'55 cm cuchilla')}
-     <line x1="90" y1="175" x2="90" y2="195" stroke="${C.dim}" stroke-width="1"/>
-     <line x1="470" y1="175" x2="470" y2="195" stroke="${C.dim}" stroke-width="1"/>
-     ${note('La cuchilla va casi horizontal: corta raíces sin voltear el suelo',362)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('ESCARDADOR',[['Brazo corto vertical 40×40×3','200mm','Acero S235','×1'],['Cuchilla ancha 4mm','550×80mm','Acero duro 400','×1'],['Pletina soporte 30×4mm','80mm c/u','Acero S235','×2'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Perno M10×60 + mariposa','M10×60mm','Galvanizado','×1'],['Tornillos cuchilla M8×30','M8×30mm','Galvanizado','×4'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 40cm (brazo+rastra)','0,40m','~1,4 €','Ferretería'],['Plancha 4mm · 55×8cm (cuchilla)','55×8cm','~4 €','Almacén acero'],['Pletina 30×4mm · 16cm (soportes)','0,16m','~0,5 €','Ferretería'],['Perno M10×60mm + mariposa','×1','~0,5 €','Ferretería'],['Tornillos M8×30mm','×4','~0,6 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['La cuchilla va casi horizontal (5-8°): corta raíces sin voltear el suelo.','Afilar el filo delantero cada 5-8h. Ángulo de afilado 25-30°.']},
-
-  {id:6,base:0,icon:'🔱',name:'Descompactador ligero',
+   como:['Separación fija 18cm (cambiar travesaño para modificar)','Nivelar la mulilla antes de empezar','Avanza a velocidad constante','Ambos surcos se abren al mismo tiempo'],
+   cultivos:'Judías, guisantes, lechuga, espinaca, remolacha, cereales',
+   materiales:[['Tubo 40×40×3mm','1,10m','Acero S275','×2'],['Plancha 6mm (cuchillas)','2×200×200mm','Acero duro 400','×2'],['Pletina 40×8mm (travesaño)','36cm','Acero S235','×1']]},
+  {id:5,base:0,icon:'✂️',name:'Escardador',dif:1,cost:'~8€',tiempo:'½ tarde',
+   uso:'Cortar malas hierbas a ras de raíz con cuchilla casi horizontal. No voltea el suelo, solo corta superficialmente.',
+   cuando:'Cuando las hierbas son pequeñas (2-5cm). Resultado más limpio que el cultivador.',
+   como:['Ángulo cuchilla 5-8° (casi horizontal)','Profundidad solo 3-6cm','Afilar filo delantero cada 5-8h','Movimiento suave y constante'],
+   cultivos:'Cualquier cultivo en campo abierto',
+   materiales:[['Tubo 40×40×3mm','40cm','Acero S235','×1'],['Plancha 4mm (cuchilla)','55×8cm','Acero duro','×1'],['Pletina 30×4mm','16cm','Acero S235','×1'],['Perno M10×60mm+mariposa','×1','~0,5€','']]},
+  {id:6,base:0,icon:'🔱',name:'Descompactador ligero',dif:1,cost:'~7€',tiempo:'½ tarde',
    uso:'Romper la capa compacta del suelo (8-12cm) sin voltear la tierra. Mejora drenaje y penetración de raíces.',
    cuando:'Antes de sembrar en suelos sin labrar. Cada 3-4 años para prevenir suela de labor.',
-   como:['Pasar SOLO con suelo seco: en húmedo compacta más.','Profundidad 8-12cm. Avanza muy lento.','El cincel (punta) es desmontable M12: cambiarlo al desgastarse.','Observar grietas en el suelo: si no hay, aumentar profundidad.'],
-   cultivos:'Frutales, viñedo, olivar, patatas, zanahoria.',
-   dif:1,cost:'~7 €',time:'½ tarde',
-   views:[{label:'Vista lateral',svg:()=>genericFrontal('DESCOMPACTADOR LIGERO','Vista lateral · Profundidad 8-12cm sin voltear',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <path d="M380,62 C378,132 370,202 360,272 356,310 358,340 370,365" stroke="${C.steel}" stroke-width="20" fill="none"/>
-     <path d="M380,62 C378,132 370,202 360,272 356,310 358,340 370,365" stroke="${C.dark}" stroke-width="2" fill="none"/>
-     <polygon points="364,360 382,360 396,384 370,398 350,386" fill="${C.dark}" stroke="${C.dark}"/>
-     <line x1="364" y1="362" x2="350" y2="386" stroke="${C.wh}" stroke-width="2.5"/>
-     ${[[380,370,435,325],[380,370,320,330],[380,370,390,420]].map(([x1,y1,x2,y2])=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#5a3a18" stroke-width="2"/>`).join('')}
-     <line x1="80" y1="280" x2="680" y2="280" stroke="#6a4a28" stroke-width="1" stroke-dasharray="6,4"/>
-     <text x="90" y="272" font-size="9.5" fill="#6a4a28">— suela de labor (8-12cm) —</text>
-     ${gnd(80,370,600)}
-     ${dv(90,62,365,'30cm','left')}
-     ${note('Pasar con suelo SECO. Cincel desmontable M12: cambiar solo la punta al gastar.',393)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('DESCOMPACTADOR',[['Brazo curvado 40×40×3','350mm','Acero S275','×1'],['Cincel/punta 10mm','100×50mm','Acero duro 400','×1'],['Perno cincel M12×80 (desmontable)','M12×80mm','Galvanizado','×1'],['Barra reg. prof. Ø12mm','280mm · aguj. c/30mm','Acero S235','×1'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Perno M10×60 + mariposa','M10×60mm','Galvanizado','×1'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm S275 · 55cm','0,55m','~2 €','Ferretería'],['Plancha 10mm · 10×5cm (cincel)','10×5cm','~2 €','Almacén acero'],['Varilla Ø12mm · 28cm (barra reg.)','0,28m','~0,5 €','Ferretería'],['Perno M12×80mm (cincel)','×1','~0,8 €','Ferretería'],['Perno M10×60mm + mariposa','×1','~0,5 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Pasar con suelo SECO. En húmedo compacta más en vez de romper.','Cincel desmontable M12: cambiar solo la punta cuando se gaste.']},
-
-  {id:7,base:0,icon:'🧄',name:'Surcador para ajos',
-   uso:'Abrir surco fino calibrado Ø35mm a profundidad fija de 8cm, perfecta para la siembra de ajos.',
-   cuando:'Otoño para siembra de ajos (sept-nov en España). Tope fijo garantiza uniformidad.',
-   como:['El tope de profundidad está fijado a 8cm: NO modificar.','Avanza a velocidad constante y moderada.','Punta cónica abre el suelo sin romperlo.','Combinar con dosificador (apero 8) y tapador (apero 9).'],
-   cultivos:'Ajos exclusivamente. Tope fijo a 8cm específico para este cultivo.',
-   dif:1,cost:'~5,7 €',time:'½ tarde',
-   views:[{label:'Vista lateral',svg:()=>genericFrontal('SURCADOR PARA AJOS','Vista lateral · Tope fijo 8cm · Punta cónica Ø35mm',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="366" y="62" width="28" height="200" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <rect x="335" y="222" width="90" height="18" fill="${C.yel}" stroke="${C.dark}" stroke-width="2"/>
-     <text x="380" y="235" font-size="10" fill="${C.dark}" text-anchor="middle" font-weight="800">TOPE FIJO 8cm</text>
-     <polygon points="366,260 394,260 394,295 382,315 380,328 378,315 366,295" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     ${[270,282,295,307].map(y=>`<ellipse cx="380" cy="${y}" rx="12" ry="3" fill="${C.steell}" stroke="${C.dark}" stroke-width="1" opacity=".5"/>`).join('')}
-     <polygon points="374,323 386,323 380,338" fill="${C.dark}"/>
-     ${gnd(80,350,600)}
-     <polygon points="360,350 380,372 400,350" fill="#3a5060" stroke="${C.dark}" stroke-width="1.5"/>
-     ${dv(90,62,260,'19cm','left')}
-     <line x1="90" y1="62" x2="366" y2="62" stroke="${C.dim}" stroke-width="1"/>
-     <line x1="90" y1="260" x2="366" y2="260" stroke="${C.dim}" stroke-width="1"/>
-     ${lbl(408,222,'Tope FIJO\n8cm exactos')}
-     ${note('Tope FIJO a 8cm: NO hacer regulable. Uniformidad es clave.',375)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('SURCADOR AJOS',[['Brazo vertical 40×40×3','190mm','Acero S235','×1'],['Punta cónica Ø35mm','L=80mm','Acero S235 torneado','×1'],['Tope profundidad fijo 40×5mm','70mm · 2×M8','Acero S235','×1'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Tornillo tope M8×25','M8×25mm','Galvanizado','×2'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 39cm (brazo+rastra)','0,39m','~1,4 €','Ferretería'],['Punta cónica Ø35mm L=80mm (tornero)','×1','~2,5 €','Tornería local'],['Pletina 40×5mm · 7cm (tope)','0,07m','~0,3 €','Ferretería'],['Tornillos M8×25mm (tope)','×2','~0,3 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Tope FIJO a 8cm: no hacerlo regulable. La uniformidad es clave.','Punta cónica Ø35mm: pedir a tornería local (~2,5€).']},
-
-  {id:8,base:0,icon:'📦',name:'Dosificador de ajos',
-   uso:'Depositar los ajos uno a uno en el surco. Tolva para ~50 cabezas de ajo.',
-   cuando:'Inmediatamente después del apero 7 (surcador de ajos).',
-   como:['Llenar la tolva con ajos del mismo tamaño.','Abrir la compuerta para iniciar el flujo.','El tubo guía Ø60mm deja caer el ajo en el surco.','Abrir la compuerta según la velocidad de avance.'],
-   cultivos:'Ajos. También cebollines y chalotes de tamaño similar.',
-   dif:1,cost:'~7,3 €',time:'½ tarde',
-   views:[{label:'Vista lateral',svg:()=>genericFrontal('DOSIFICADOR DE AJOS','Vista lateral · Tolva + tubo guía PVC Ø60mm',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="366" y="62" width="28" height="78" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <polygon points="316,140 444,140 418,250 380,268 342,250" fill="#b8d8b8" stroke="${C.dark}" stroke-width="2.5"/>
-     ${Array.from({length:12},(_,i)=>{const gx=330+Math.sin(i*47)*45;const gy=155+Math.cos(i*31)*40;return `<ellipse cx="${gx}" cy="${gy}" rx="9" ry="6" fill="#c8b888" stroke="#a09060" stroke-width="1"/>`;}).join('')}
-     <polygon points="316,140 444,140 418,250 380,268 342,250" fill="none" stroke="${C.dark}" stroke-width="2.5"/>
-     <text x="380" y="200" font-size="12" fill="#284818" text-anchor="middle" font-weight="700">AJOS</text>
-     <rect x="356" y="264" width="48" height="15" fill="${C.yel}" stroke="${C.dark}" stroke-width="2"/>
-     <rect x="366" y="279" width="28" height="118" fill="#b8d8b8" stroke="${C.dark}" stroke-width="2.5"/>
-     <ellipse cx="380" cy="328" rx="9" ry="6" fill="#c8b888" stroke="#a09060" stroke-width="1.5"/>
-     <ellipse cx="380" cy="373" rx="9" ry="6" fill="#c8b888" stroke="#a09060" stroke-width="1.5"/>
-     ${gnd(80,397,600)}
-     ${dh(316,444,126,'13cm boca tolva')}
-     ${dv(90,279,397,'12cm tubo','left')}
-     ${note('Tolva: PVC o chapa 1mm. Montaje con 2 abrazaderas Ø50mm. Sin soldadura.',418)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('DOSIFICADOR AJOS',[['Brazo soporte 40×40×3','120mm','Acero S235','×1'],['Tubo guía PVC Ø60mm int.','L=300mm','PVC Ø60','×1'],['Tolva (embudo) chapa 1mm','130×130mm','Chapa galv./PVC','×1'],['Compuerta manual chapa 2mm','60×40mm','Chapa acero','×1'],['Abrazadera tubo Ø50mm','—','Acero galv.','×2'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Tornillos abrazadera M6×25','M6×25mm','Galvanizado','×4'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 32cm (brazo+rastra)','0,32m','~1,2 €','Ferretería'],['Tubo PVC Ø60mm · 30cm (guía)','0,30m','~1,5 €','Fontanería'],['Chapa 1mm 15×15cm (tolva) o PVC','15×15cm','~2 €','Ferretería'],['Abrazaderas tubo Ø50mm','×2','~1 €','Ferretería'],['Tornillos M6×25mm','×4','~0,4 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Tolva: PVC o chapa 1mm. Capacidad ~50 cabezas de ajo.','Se monta con 2 abrazaderas Ø50mm. Sin soldadura, completamente desmontable.']},
-
-  {id:9,base:0,icon:'🏔️',name:'Tapador de surcos',
+   como:['Pasar SOLO con suelo seco (muy importante)','Profundidad 8-12cm. Avanza muy lento','Cincel desmontable M12: cambiar cuando se gaste','Nota: en suelo húmedo compacta aún más'],
+   cultivos:'Frutales, viñedo, olivar, patatas, zanahoria',
+   materiales:[['Tubo 40×40×3mm','55cm','Acero S275','×1'],['Plancha 10mm (cincel)','10×5cm','Acero duro','×1'],['Varilla Ø12mm (barra reg.)','28cm','Acero','×1'],['Perno M12×80mm','×1','~0,8€','']]},
+  {id:7,base:0,icon:'🧄',name:'Surcador para ajos',dif:1,cost:'~5,7€',tiempo:'½ tarde',
+   uso:'Abrir surco fino calibrado Ø35mm a profundidad fija de 8cm, perfecta para siembra de ajos.',
+   cuando:'Otoño para siembra de ajos (septiembre-noviembre). Tope fijo garantiza uniformidad.',
+   como:['El tope está fijado a 8cm: NO modificar','Avanza a velocidad constante','Combinar con dosificador (apero 8) y tapador (9)','Punta cónica Ø35mm calibrada'],
+   cultivos:'Ajos exclusivamente',
+   materiales:[['Tubo 40×40×3mm','39cm','Acero S235','×1'],['Punta cónica Ø35mm L=80mm','×1','~2,5€','Tornería'],['Pletina 40×5mm (tope)','7cm','Acero S235','×1']]},
+  {id:8,base:0,icon:'📦',name:'Dosificador de ajos',dif:1,cost:'~7,3€',tiempo:'½ tarde',
+   uso:'Depositar los ajos uno a uno en el surco abierto por el apero 7. Tolva para ~50 cabezas de ajo.',
+   cuando:'Inmediatamente después del apero 7 (surcador para ajos).',
+   como:['Llenar tolva con ajos del mismo tamaño','Abrir compuerta para iniciar flujo','Abrir según velocidad de avance','Cada ajo cae en el surco uno a uno'],
+   cultivos:'Ajos. También cebollines y chalotes de tamaño similar',
+   materiales:[['Tubo 40×40×3mm','32cm','Acero S235','×1'],['Tubo PVC Ø60mm','30cm','PVC','×1'],['Chapa 1mm (tolva)','15×15cm','Acero','×1'],['Abrazaderas tubo Ø50mm','×2','~1€','']]},
+  {id:9,base:0,icon:'🏔️',name:'Tapador de surcos',dif:2,cost:'~12€',tiempo:'½ tarde',
    uso:'Cubrir los ajos con tierra tras depositarlos. 2 discos convergentes empujan tierra desde los lados.',
-   cuando:'Inmediatamente después del dosificador (apero 8). Completa la secuencia de siembra.',
-   como:['Ajusta el ángulo de los discos (10-18°) según la cobertura deseada.','10°: cobertura suave. 18°: más tierra encima.','Avanza a la misma velocidad que con surcador y dosificador.','Verificar que los discos giran libremente antes de empezar.'],
-   cultivos:'Ajos. También cebollas de siembra y tubérculos pequeños.',
-   dif:2,cost:'~12 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:()=>genericFrontal('TAPADOR DE SURCOS','2 discos convergentes Ø180mm · Ángulo 10-18°',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="366" y="62" width="28" height="118" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <rect x="300" y="178" width="160" height="20" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2"/>
-     <circle cx="290" cy="308" r="78" fill="${C.steel}" stroke="${C.dark}" stroke-width="3"/>
-     <circle cx="290" cy="308" r="64" fill="#8a9aaa" stroke="${C.dark}" stroke-width="1.5"/>
-     <circle cx="290" cy="308" r="11" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2"/>
-     <path d="M 250,278 A 48,48 0 0 1 290,265" stroke="${C.wh}" stroke-width="5" fill="none"/>
-     <circle cx="470" cy="308" r="78" fill="${C.steel}" stroke="${C.dark}" stroke-width="3"/>
-     <circle cx="470" cy="308" r="64" fill="#8a9aaa" stroke="${C.dark}" stroke-width="1.5"/>
-     <circle cx="470" cy="308" r="11" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2"/>
-     <path d="M 430,278 A 48,48 0 0 1 470,265" stroke="${C.wh}" stroke-width="5" fill="none"/>
-     <line x1="380" y1="198" x2="290" y2="232" stroke="${C.red}" stroke-width="1.5" stroke-dasharray="4,3"/>
-     <line x1="380" y1="198" x2="470" y2="232" stroke="${C.red}" stroke-width="1.5" stroke-dasharray="4,3"/>
-     <text x="346" y="222" font-size="11" fill="${C.red}" font-weight="700">10-18°</text>
-     ${gnd(80,384,600)}
-     <ellipse cx="380" cy="380" rx="11" ry="7" fill="#c8b888" stroke="#a09060" stroke-width="1.5"/>
-     <text x="380" y="362" font-size="10" fill="${C.dark}" text-anchor="middle">AJO cubierto</text>
-     ${dh(212,548,365,'32cm entre discos')}
-     ${note('10° cobertura suave · 18° más tierra · Discos Ø180mm: cortar de chapa 3mm',400)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('TAPADOR DE SURCOS',[['Brazo principal 40×40×3','200mm','Acero S235','×1'],['Eje porta-discos Ø20mm','L=160mm','Acero C45','×1'],['Disco cóncavo 3mm','Ø180mm','Acero laminado','×2'],['Barra ajuste ángulo 40×8mm','80mm + ranura','Pletina acero','×1'],['Rodamiento 608 (8×22×7mm)','—','Rodamiento','×2'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Perno ajuste M8×40 + mariposa','M8×40mm','Galvanizado','×2'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 40cm (brazo+rastra)','0,40m','~1,4 €','Ferretería'],['Chapa 3mm · 30×40cm (2 discos Ø180mm)','30×40cm','~5 €','Almacén acero'],['Barra Ø20mm L=16cm (eje discos)','0,16m','~0,8 €','Ferretería'],['Pletina 40×8mm · 8cm (ajuste ángulo)','0,08m','~0,4 €','Ferretería'],['Rodamientos 608 (8×22×7mm)','×2','~2,5 €','Recambios/online'],['Pernos M8×40mm + mariposa','×2','~0,8 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Discos Ø180mm: cortar de chapa 3mm con amoladora.','Ángulo 10°=cobertura suave, 18°=más tierra encima.']},
-
-  {id:10,base:1,icon:'🌾',name:'Rastrillo recogedor',
-   uso:'Recoger hierba segada y paja en hileras. 7 púas de muelle que saltan sobre las piedras.',
-   cuando:'Inmediatamente después de segar la hierba o cosechar cereal.',
-   como:['Avanza trazando franjas paralelas por el campo.','Las púas arrastran el material hacia una hilera.','Recoger las hileras con pala o horca después.','Las púas de muelle saltan sobre piedras sin romperse.'],
-   cultivos:'Pastizales, cereales, maíz forrajero, praderas.',
-   dif:1,cost:'~10 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:()=>genericFrontal('RASTRILLO RECOGEDOR','7 púas con muelle · Ancho 55cm',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="120" y="88" width="520" height="20" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-     <text x="380" y="101" font-size="9.5" fill="white" text-anchor="middle">Barra frontal 55cm · 40×40×3mm</text>
-     <line x1="120" y1="108" x2="310" y2="278" stroke="${C.steel}" stroke-width="10"/>
-     <line x1="120" y1="108" x2="310" y2="278" stroke="${C.dark}" stroke-width="2"/>
-     <line x1="640" y1="108" x2="450" y2="278" stroke="${C.steel}" stroke-width="10"/>
-     <line x1="640" y1="108" x2="450" y2="278" stroke="${C.dark}" stroke-width="2"/>
-     <rect x="308" y="276" width="144" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     ${[170,242,314,380,446,518,590].map(tx=>`
-       <path d="M${tx},108 C${tx},128 ${tx-2},138 ${tx-4},148" stroke="${C.steel}" stroke-width="4" fill="none"/>
-       <path d="M${tx-4},148 C${tx-6},198 ${tx-10},242 ${tx-14},274" stroke="${C.dark}" stroke-width="4" fill="none"/>
-       <circle cx="${tx-14}" cy="272" r="5" fill="${C.dark}"/>
-     `).join('')}
-     ${gnd(80,330,600)}
-     <ellipse cx="380" cy="318" rx="98" ry="13" fill="#b8902a" stroke="#907820" stroke-width="1.5" opacity=".85"/>
-     <text x="380" y="323" font-size="9.5" fill="#5a3a08" text-anchor="middle" font-weight="700">HILERA RECOGIDA</text>
-     ${dh(120,640,72,'55 cm')}
-     <line x1="120" y1="72" x2="120" y2="88" stroke="${C.dim}" stroke-width="1"/>
-     <line x1="640" y1="72" x2="640" y2="88" stroke="${C.dim}" stroke-width="1"/>
-     ${note('Varilla Ø8mm TEMPLADA (65Mn): cede al golpear piedras y vuelve sola.',352)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('RASTRILLO',[['Barra frontal 40×40×3','550mm','Acero S235','×1'],['Brazo lateral inclinado 40×20×2','350mm c/u','Acero S235','×2'],['Barra trasera 30×30×2','280mm','Acero S235','×1'],['Púa con muelle Ø8mm','L=250mm','Varilla templada 65Mn','×7'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Tornillos montaje M8×30','M8×30mm','Galvanizado','×8'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 55cm (barra frontal)','0,55m','~2 €','Ferretería'],['Tubo 40×20×2mm · 70cm (2 brazos lat.)','0,70m','~1,5 €','Ferretería'],['Tubo 30×30×2mm · 28cm (barra trasera)','0,28m','~0,5 €','Ferretería'],['Tubo 40×40×3mm · 20cm (rastra eng.)','0,20m','~0,7 €','Ferretería'],['Varilla templada 65Mn Ø8mm · 1,75m','1,75m','~3 €','Ferretería'],['Tornillos M8×30mm','×8','~1 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Varilla Ø8mm TEMPLADA (65Mn): cede al golpear piedras y vuelve.','El resorte en la parte alta de cada púa absorbe los impactos.']},
-
-  {id:11,base:1,icon:'🪨',name:'Quita-piedras',
-   uso:'Despedregar la superficie antes de sembrar. 11 dientes curvados en 2 filas en zigzag.',
-   cuando:'Antes de sembrar en terrenos pedregosos o después del arado.',
-   como:['Primera pasada 8cm: levanta piedras principales.','Recoger las piedras y llevarlas al borde.','Segunda pasada perpendicular para las restantes.','No pasar en suelo muy húmedo.'],
-   cultivos:'Cualquier cultivo. Imprescindible en terrenos pedregosos.',
-   dif:2,cost:'~25,4 €',time:'1 tarde',
-   views:[{label:'Vista frontal',svg:()=>genericFrontal('QUITA-PIEDRAS','11 dientes en 2 filas zigzag · 60cm',`
-     <rect x="332" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="130" y="88" width="600" height="22" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-     <text x="430" y="102" font-size="9.5" fill="white" text-anchor="middle">Barra 60cm · 50×40×3mm</text>
-     ${[175,278,382,486,588,690].map(tx=>`
-       <rect x="${tx-9}" y="110" width="18" height="18" fill="#2a6a4a" stroke="${C.dark}" stroke-width="1.5"/>
-       <path d="M${tx},128 C${tx-1},168 ${tx-8},205 ${tx-20},242 ${tx-24},268 ${tx-27},290" fill="none" stroke="#585868" stroke-width="13"/>
-       <path d="M${tx},128 C${tx-1},168 ${tx-8},205 ${tx-20},242 ${tx-24},268 ${tx-27},290" fill="none" stroke="${C.dark}" stroke-width="1.5"/>
-       <path d="M${tx-27},290 C${tx-35},308 ${tx-26},320 ${tx-12},317" fill="none" stroke="#585868" stroke-width="13"/>
-       <circle cx="${tx-22}" cy="314" r="5" fill="${C.dark}"/>
-     `).join('')}
-     ${[228,332,436,538,640].map(tx=>`
-       <path d="M${tx},110 C${tx-1},148 ${tx-6},182 ${tx-16},218 ${tx-20},240 ${tx-22},260" fill="none" stroke="#7a8898" stroke-width="10"/>
-       <path d="M${tx-22},260 C${tx-28},276 ${tx-22},286 ${tx-10},284" fill="none" stroke="#7a8898" stroke-width="10"/>
-       <circle cx="${tx-18}" cy="282" r="4" fill="#4a5868"/>
-     `).join('')}
-     ${[[220,340,16],[320,332,12],[410,348,14],[500,336,10],[580,342,13],[650,334,11]].map(([x,y,r])=>`<polygon points="${x-r},${y} ${x-r*.4},${y-r} ${x+r*.7},${y-r*.5} ${x+r},${y+r*.3} ${x+r*.3},${y+r} ${x-r*.6},${y+r*.6}" fill="#8a7a6a" stroke="#aaa" stroke-width="1"/>`).join('')}
-     ${gnd(80,348,660)}
-     ${dh(130,730,72,'60 cm')}
-     <line x1="130" y1="72" x2="130" y2="88" stroke="${C.dim}" stroke-width="1"/>
-     <line x1="730" y1="72" x2="730" y2="88" stroke="${C.dim}" stroke-width="1"/>
-     ${note('El gancho en la punta ENGANCHA la piedra. Sin gancho solo la empuja y resbala.',368)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('QUITA-PIEDRAS',[['Barra 50×40×3mm','600mm','Acero S235','×1'],['Diente fila 1 Ø12mm muelle','L=300mm','Acero muelle 65Mn','×6'],['Diente fila 2 Ø12mm muelle','L=275mm','Acero muelle 65Mn','×5'],['Gancho tip 6mm','40×25mm','Acero duro 400','×11'],['Grapa sujeción en U 4mm','40×40mm','Acero S235','×11'],['Barra reg. prof. Ø8mm','L=600mm · aguj. c/3cm','Acero S235','×1'],['Perno M8×40 + mariposa','M8×40mm','Galvanizado','×11'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Varilla muelle 65Mn Ø12mm · 5,75m (11 dientes)','5,75m','~11 €','Chatarrero/ferret.'],['Plancha 6mm · 25×15cm (11 ganchos)','25×15cm','~4,5 €','Almacén acero'],['Tubo 50×40×3mm · 60cm (barra)','0,60m','~2 €','Ferretería'],['Tubo 40×40×3mm · 20cm (rastra)','0,20m','~0,7 €','Ferretería'],['Pletina 40×4mm · 55cm (grapas en U)','0,55m','~2,5 €','Ferretería'],['Varilla Ø8mm · 60cm (barra reg.)','0,60m','~0,5 €','Ferretería'],['Pernos M8×40mm + mariposa','×11','~3 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['El gancho en la punta engancha la piedra. Sin él solo la empuja.','2 filas en zigzag garantizan cobertura total sin dejar franjas.']},
-
-  {id:12,base:1,icon:'⬛',name:'Nivelador / cuchilla',
-   uso:'Nivelar y alisar el suelo. Cuchilla de ángulo regulable 0-30° para distintas funciones.',
+   cuando:'Inmediatamente después del dosificador (apero 8). Cierra el ciclo de siembra de ajos.',
+   como:['Ajusta ángulo (10-18°): 10°=cobertura suave · 18°=más tierra','Avanza a la misma velocidad que surcador y dosificador','Ambos discos trabajan simultáneamente'],
+   cultivos:'Ajos. También cebollas de siembra y tubérculos pequeños',
+   materiales:[['Tubo 40×40×3mm','40cm','Acero S235','×1'],['Chapa 3mm (2 discos)','2×180mm Ø','Acero S235','×2'],['Barra Ø20mm','16cm','Acero','×1'],['Rodamientos 608','×2','~2,5€','Online']]},
+  {id:10,base:1,icon:'🌾',name:'Rastrillo recogedor',dif:1,cost:'~10€',tiempo:'½ tarde',
+   uso:'Recoger hierba segada y paja en hileras limpias. 7 púas de muelle que saltan sobre piedras sin romperse.',
+   cuando:'Inmediatamente después de segar o guadañar.',
+   como:['Avanza trazando franjas paralelas','Las púas arrastran el material en una hilera','Las púas de muelle saltan sobre piedras sin romperse','Recoge eficientemente sin dañar las plantas'],
+   cultivos:'Pastizales, cereales, maíz forrajero, alfalfa',
+   materiales:[['Tubo 40×40×3mm (barra)','55cm','Acero S235','×1'],['Varilla templada 65Mn Ø8mm','1,75m','Acero muelle','×7'],['Tubo 40×40×3mm (rastra)','20cm','Acero S235','×1']]},
+  {id:11,base:1,icon:'🪨',name:'Quita-piedras',dif:2,cost:'~25,4€',tiempo:'1 tarde',
+   uso:'Despedregar la superficie. 11 dientes curvados en 2 filas en zigzag para cobertura total.',
+   cuando:'Antes de sembrar en terrenos pedregosos. Imprescindible para preparar el terreno.',
+   como:['Primera pasada 8cm: levanta piedras principales','Recoger las piedras y llevarlas al borde','Segunda pasada perpendicular para las restantes','Gancho en la punta es clave: engancha la piedra'],
+   cultivos:'Cualquier cultivo. Imprescindible en terrenos pedregosos',
+   materiales:[['Varilla muelle 65Mn Ø12mm','5,75m','Acero muelle','×11'],['Plancha 6mm','25×15cm','Acero duro','×1'],['Tubo 50×40×3mm','60cm','Acero S235','×1']]},
+  {id:12,base:1,icon:'⬛',name:'Nivelador / cuchilla',dif:1,cost:'~10,5€',tiempo:'½ tarde',
+   uso:'Nivelar y alisar el suelo. Cuchilla de ángulo regulable 0-30° para diferentes tareas.',
    cuando:'Después del arado para preparar el lecho de siembra.',
-   como:['0°: nivelar horizontal. 15-30°: empujar tierra lateral.','Avanza a velocidad constante.','Afilar el filo delantero cada 8-10h (ángulo 25-30°).','2 pasadas si el terreno es muy irregular.'],
-   cultivos:'Hortalizas, cereales, cualquier cultivo que necesite suelo nivelado.',
-   dif:1,cost:'~10,5 €',time:'½ tarde',
-   views:[{label:'Vista lateral',svg:()=>genericFrontal('NIVELADOR / CUCHILLA','Ángulo regulable 0-30°· Cuchilla 60cm',`
-     <rect x="282" y="44" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="320" y="62" width="20" height="155" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     ${[92,120,148].map(y=>`<circle cx="330" cy="${y}" r="4" fill="${C.dark}" opacity=".4"/>`).join('')}
-     <circle cx="330" cy="217" r="12" fill="${C.yel}" stroke="${C.dark}" stroke-width="2.5"/>
-     <rect x="110" y="224" width="352" height="16" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5" transform="rotate(-8,330,230)"/>
-     <line x1="108" y1="230" x2="462" y2="220" stroke="${C.wh}" stroke-width="3"/>
-     <path d="M 280,217 A 50,50 0 0 1 330,167" stroke="${C.red}" stroke-width="1.5" fill="none"/>
-     <text x="252" y="202" font-size="11" fill="${C.red}" font-weight="700">15°</text>
-     <polygon points="90,263 112,232 462,218 480,263" fill="#5a3820" opacity=".6"/>
-     ${gnd(80,330,600)}
-     <line x1="80" y1="325" x2="680" y2="325" stroke="${C.gnd}" stroke-width="2.5"/>
-     <text x="380" y="320" font-size="10" fill="${C.gnd}" text-anchor="middle">suelo nivelado</text>
-     <text x="334" y="212" font-size="10" fill="${C.dark}">Pivote M12</text>
-     ${note('0°=nivelar · 15-30°=empujar tierra lateral · Afilar cada 8-10h',352)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('NIVELADOR',[['Brazo vertical 40×40×3','160mm','Acero S235','×1'],['Cuchilla plana 4mm','600×80mm','Acero duro 400','×1'],['Pivote ángulo M12×60','M12×60mm + tuerca','Galvanizado','×1'],['Pletina soporte 40×5mm','80mm c/u','Acero S235','×2'],['Perno fijación ángulo M10×50','M10×50mm + mariposa','Galvanizado','×2'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Tornillos cuchilla M8×30','M8×30mm','Galvanizado','×4'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 36cm (brazo+rastra)','0,36m','~1,3 €','Ferretería'],['Plancha 4mm · 60×8cm (cuchilla)','60×8cm','~5 €','Almacén acero'],['Pletina 40×5mm · 16cm (soportes)','0,16m','~0,6 €','Ferretería'],['Perno M12×60mm + tuerca (pivote)','×1','~0,8 €','Ferretería'],['Pernos M10×50mm + mariposa (ángulo)','×2','~1 €','Ferretería'],['Tornillos M8×30mm','×4','~0,6 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['0°=nivelar horizontal. 15-30°=empujar tierra lateral.','Afilar el filo delantero cada 8-10h. Ángulo de afilado 25-30°.']},
-
-  {id:13,base:2,icon:'🛢️',name:'Rodillo compactador',
-   uso:'Compactar el lecho de siembra. Peso regulable 8-25kg con agua. Asegura contacto semilla-tierra.',
-   cuando:'Después de la rastra y antes de sembrar.',
-   como:['Llenar el cilindro con agua según el peso deseado.','Suelos sueltos: más agua (~25kg). Arcillosos: menos (~10kg).','Avanza a velocidad constante sin paradas.','Comprobar que el tapón esté bien cerrado.','Vaciar el agua para almacenarlo.'],
-   cultivos:'Trigo, cebada, centeno, avena, praderas, semillas pequeñas.',
-   dif:2,cost:'~21 €',time:'1 tarde',
-   views:[{label:'Vista frontal',svg:rodFrontal},{label:'Sección transversal',svg:rodSeccion},{label:'Medidas y piezas',svg:()=>genericDetalle('RODILLO',[['Barra enganche 40×40×3','600mm','Acero S235','×1'],['Horquilla pletina 50×8mm','L=240mm doblada','Acero S235','×2'],['Cilindro Ø200mm','L=550mm','Bidón PVC 60L / tubo acero','×1'],['Eje central Ø25mm','L=650mm','Acero C45','×1'],['Tapón lateral disco 4mm','Ø200mm','Acero S235','×2'],['Tapón llenado','Rosca 1 pulgada','Hierro/latón','×1'],['Perno sujeción horquilla M10×50','M10×50mm','Galvanizado','×4'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Tubo 40×40×3mm · 60cm (barra enganche)','0,60m','~2 €','Ferretería'],['Pletina 50×8mm · 48cm (2 horquillas en U)','0,48m','~2 €','Ferretería'],['Bidón PVC 60L (cilindro rodillo)','×1','~5 €','Ferretería/almacén'],['Barra Ø25mm L=65cm (eje)','0,65m','~3 €','Ferretería'],['Chapa 4mm · 30×20cm (2 tapones Ø200mm)','30×20cm','~5 €','Almacén acero'],['Tapón rosca 1 pulgada','×1','~2 €','Fontanería'],['Pernos M10×50mm','×4','~1,2 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Cilindro: bidón PVC 60L (~5€) en lugar de tubo de acero. Igual de eficaz.','Tapón rosca 1": añadir/quitar agua para ajustar el peso exacto.']},
-
-  {id:14,base:2,icon:'💩',name:'Esparcidor de estiércol',
+   como:['0°: nivelar horizontal · 15-30°: empujar tierra lateral','Avanza a velocidad constante','Afilar filo delantero cada 8-10h. Ángulo 25-30°','Se puede usar para abrir caminos suaves'],
+   cultivos:'Hortalizas, cereales, cualquier cultivo',
+   materiales:[['Tubo 40×40×3mm','36cm','Acero S235','×1'],['Plancha 4mm (cuchilla)','60×8cm','Acero duro','×1'],['Pletina 40×5mm (soportes)','16cm','Acero S235','×1'],['Perno M12×60mm','×1','~0,8€','']]},
+  {id:13,base:2,icon:'🛢️',name:'Rodillo compactador',dif:2,cost:'~21€',tiempo:'1 tarde',
+   uso:'Compactar el lecho de siembra. Peso regulable 8-25kg con agua. Ø20cm × 55cm.',
+   cuando:'Después de la rastra y antes de sembrar cereales.',
+   como:['Llenar con agua según el peso deseado','Suelos sueltos: más agua · Arcillosos: menos agua','Avanza a velocidad constante sin paradas','Vaciar agua para almacenar'],
+   cultivos:'Trigo, cebada, centeno, avena, praderas',
+   materiales:[['Tubo 40×40×3mm (enganche)','60cm','Acero S235','×1'],['Pletina 50×8mm (horquillas)','48cm','Acero S235','×1'],['Bidón PVC 60L (cilindro)','×1','~5€','Ferretería'],['Barra Ø25mm','65cm','Acero','×1'],['Rodamientos 6205','×2','~8€','Online'],['Tapón rosca 1"','×1','~2€','Fontanería']]},
+  {id:14,base:2,icon:'💩',name:'Esparcidor de estiércol',dif:2,cost:'~14€',tiempo:'½ tarde',
    uso:'Distribuir estiércol o compost uniformemente. Tolva ~30L con batidor de paletas.',
-   cuando:'Inicio de temporada (abono de fondo) o durante el cultivo (cobertera).',
-   como:['Llenar la tolva sin superar el 80% de capacidad.','Calibrar la dosis en 10m antes de abonar todo.','Avanza a velocidad constante. Velocidad determina la dosis.','Limpiar con agua tras cada uso.'],
-   cultivos:'Todos los cultivos: hortalizas, cereales, frutales, viñedo, olivar.',
-   dif:2,cost:'~14 €',time:'½ tarde',
-   views:[{label:'Vista frontal',svg:()=>genericFrontal('ESPARCIDOR DE ESTIÉRCOL','Tolva ~30L · Batidor paletas · Distribución 60cm',`
-     <rect x="332" y="38" width="96" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="1.5" rx="2"/>
-     <rect x="356" y="56" width="48" height="72" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <polygon points="160,128 600,128 525,305 235,305" fill="#b8903a" stroke="${C.dark}" stroke-width="2.5"/>
-     ${Array.from({length:28},(_,i)=>{const gx=175+Math.sin(i*77)*175;const gy=142+Math.cos(i*53)*68;return `<ellipse cx="${gx}" cy="${gy}" rx="${4+i%3}" ry="${3+i%2}" fill="#786020" stroke="#585010" stroke-width=".7" opacity=".9"/>`;}).join('')}
-     <polygon points="160,128 600,128 525,305 235,305" fill="none" stroke="${C.dark}" stroke-width="2.5"/>
-     <text x="380" y="210" font-size="13" fill="#281808" text-anchor="middle" font-weight="700">ESTIÉRCOL</text>
-     <rect x="235" y="301" width="290" height="14" fill="${C.yel}" stroke="${C.dark}" stroke-width="2"/>
-     <rect x="235" y="313" width="290" height="17" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-     ${Array.from({length:7},(_,i)=>`<rect x="${258+i*36}" y="317" width="10" height="26" fill="#c07018" stroke="${C.dark}" stroke-width="1.5"/><polygon points="${258+i*36-4},343 ${258+i*36+14},343 ${258+i*36+5},357" fill="#c07018" stroke="${C.dark}" stroke-width="1.5"/>`).join('')}
-     ${Array.from({length:18},(_,i)=>`<ellipse cx="${160+Math.sin(i*58)*178}" cy="${380+i*4}" rx="${3+i%3}" ry="${2+i%2}" fill="#786020" opacity=".8"/>`).join('')}
-     <line x1="120" y1="355" x2="640" y2="355" stroke="#2a6a4a" stroke-width="2"/>
-     <polygon points="120,355 135,348 135,362" fill="#2a6a4a"/>
-     <polygon points="640,355 625,348 625,362" fill="#2a6a4a"/>
-     <text x="380" y="349" font-size="11" fill="#2a6a4a" text-anchor="middle" font-weight="600">60 cm distribución</text>
-     ${gnd(80,370,600)}
-     ${dh(160,600,112,'65 cm boca tolva')}
-     ${note('Tolva: madera tratada 15mm o chapa 2mm. Calibrar pesando 10m de pasada.',390)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('ESPARCIDOR',[['Tolva 650×300×260mm','Chapa 2mm o madera 15mm','Chapa/madera tratada','×1'],['Eje batidor Ø20mm','L=320mm','Acero S235','×1'],['Paleta batidor 50×5mm','50mm c/u','Pletina acero','×6'],['Compuerta regulable 2mm','200×55mm + ranura','Chapa acero','×1'],['Perno compuerta M8×40 + mariposa','M8×40mm','Galvanizado','×2'],['Rastra enganche 40×40×3','200mm','Acero S235','×1'],['Tornillos montaje M8×30','M8×30mm','Galvanizado','×8'],['Pasador Ø16mm + chaveta','L=80mm','Acero galv.','×2']])}],
-   shop:[['Madera pino tratada 15mm · 0,8m² (tolva)','0,8m²','~8 €','Madera/bricolaje'],['Tubo 40×40×3mm · 20cm (rastra eng.)','0,20m','~0,7 €','Ferretería'],['Barra Ø20mm · 32cm (eje batidor)','0,32m','~0,8 €','Ferretería'],['Pletina 50×5mm · 30cm (6 paletas)','0,30m','~1,5 €','Ferretería'],['Chapa 2mm · 20×6cm (compuerta)','20×6cm','~1 €','Ferretería'],['Pernos M8×40mm + mariposa (compuerta)','×2','~0,5 €','Ferretería'],['Tornillos M8×30mm','×8','~1 €','Ferretería'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería']],
-   notes:['Tolva madera tratada (más fácil). Impermeabilizar con aceite de linaza.','Calibrar la dosis pesando lo distribuido en 10m antes de abonar todo.']},
-
-  {id:15,base:3,icon:'🪑',name:'Asiento sulky universal',
-   uso:'Trabajar sentado durante labores largas. Compatible con las 3 bases. Montaje en 30 segundos.',
-   cuando:'En labores largas +2h: cultivado, siembra de ajos, distribución de abono.',
-   como:['Enganchar la placa base en los puntos Ø18mm con 2 pasadores.','Ajustar la altura con el perno M10 de mariposa (cada 4cm).','Verificar que los pies llegan al suelo o reposapiés.','Las ruedas traseras dan estabilidad lateral.'],
-   cultivos:'Universal. Accesorio de confort para todas las labores.',
-   dif:2,cost:'~45 €',time:'1 tarde',
-   views:[{label:'Vista lateral',svg:()=>genericFrontal('ASIENTO SULKY UNIVERSAL','Compatible con BASE 1, 2 y 3 · Sin herramientas',`
-     <rect x="150" y="88" width="460" height="20" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2"/>
-     <text x="380" y="101" font-size="9.5" fill="white" text-anchor="middle">BASE DE TRABAJO (cualquier base)</text>
-     <rect x="330" y="56" width="100" height="34" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <circle cx="352" cy="73" r="6" fill="${C.dark}" stroke="${C.yel}" stroke-width="2"/>
-     <circle cx="408" cy="73" r="6" fill="${C.dark}" stroke="${C.yel}" stroke-width="2"/>
-     <line x1="340" y1="108" x2="320" y2="285" stroke="${C.steel}" stroke-width="14"/>
-     <line x1="340" y1="108" x2="320" y2="285" stroke="${C.dark}" stroke-width="2"/>
-     <line x1="420" y1="108" x2="440" y2="285" stroke="${C.steel}" stroke-width="14"/>
-     <line x1="420" y1="108" x2="440" y2="285" stroke="${C.dark}" stroke-width="2"/>
-     <rect x="310" y="282" width="140" height="18" fill="${C.steel}" stroke="${C.dark}" stroke-width="2.5"/>
-     <circle cx="310" cy="338" r="44" fill="#303030" stroke="${C.dark}" stroke-width="3"/>
-     <circle cx="310" cy="338" r="32" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <circle cx="310" cy="338" r="10" fill="${C.dark}"/>
-     <circle cx="450" cy="338" r="44" fill="#303030" stroke="${C.dark}" stroke-width="3"/>
-     <circle cx="450" cy="338" r="32" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     <circle cx="450" cy="338" r="10" fill="${C.dark}"/>
-     <rect x="368" y="108" width="24" height="140" fill="#2a6a4a" stroke="${C.dark}" stroke-width="2.5"/>
-     ${[132,156,180,204,228].map(y=>`<circle cx="380" cy="${y}" r="4" fill="${C.dark}" opacity=".4"/>`).join('')}
-     <rect x="300" y="242" width="160" height="28" fill="#a03030" stroke="${C.dark}" stroke-width="2.5" rx="4"/>
-     ${Array.from({length:8},(_,i)=>`<line x1="${315+i*18}" y1="246" x2="${315+i*18}" y2="266" stroke="#c06060" stroke-width="2"/>`).join('')}
-     <polygon points="300,244 300,162 316,152 444,152 460,162 460,244" fill="#a03030" stroke="${C.dark}" stroke-width="2.5" rx="3"/>
-     ${Array.from({length:8},(_,i)=>`<line x1="${316+i*18}" y1="155" x2="${316+i*18}" y2="242" stroke="#c06060" stroke-width="2"/>`).join('')}
-     <rect x="310" y="270" width="140" height="13" fill="${C.steel}" stroke="${C.dark}" stroke-width="2"/>
-     ${gnd(200,380,360,28)}
-     ${dv(256,108,252,'15-45cm reg.','left')}
-     <line x1="256" y1="108" x2="368" y2="108" stroke="${C.dim}" stroke-width="1"/>
-     <line x1="256" y1="252" x2="300" y2="252" stroke="${C.dim}" stroke-width="1"/>
-     ${note('Placa base Ø18mm encaja en cualquier base. 30 segundos de montaje.',402)}
-   `)},{label:'Medidas y piezas',svg:()=>genericDetalle('ASIENTO SULKY',[['Brazo sulky 40×40×3','500mm c/u','Acero S235','×2'],['Barra trasera portaruedas 40×40×3','450mm','Acero S235','×1'],['Poste asiento 40×40×3','400mm','Acero S235','×1'],['Placa base enganche pletina 100×5','250mm · 2×Ø18mm','Acero S235','×1'],['Reposapiés tubo Ø25mm','L=300mm','Tubo acero','×1'],['Eje ruedas sulky Ø20mm','L=500mm','Acero/barra','×1'],['Rueda sulky R10 estrecha','Neumático','Goma','×2'],['Cojín espuma D-30','350×300×50mm','Espuma D-30','×1'],['Funda PVC impermeable','400×350mm','Tela PVC','×1'],['Pasador enganche Ø16mm','L=80mm + chaveta','Acero galv.','×2'],['Perno reg. altura M10×60','M10×60mm + mariposa','Galvanizado','×2']])}],
-   shop:[['Tubo 40×40×3mm · 1,85m (brazos+barra+poste)','1,85m','~5 €','Almacén acero'],['Pletina 100×5mm · 25cm (placa base)','0,25m','~1 €','Ferretería'],['Tubo Ø25mm · 30cm (reposapiés)','0,30m','~0,8 €','Ferretería'],['Barra Ø20mm · 50cm (eje ruedas)','0,50m','~1,5 €','Ferretería'],['Ruedas sulky R10 estrechas','×2','~18 €','Agrícola/online'],['Espuma D-30 350×300×50mm','×1','~5 €','Tapicería/online'],['Tela PVC impermeable 400×350mm','×1','~4 €','Tapicería/online'],['Pasadores Ø16mm L=80mm + chaveta','×2','~1,2 €','Tornillería'],['Pernos M10×60mm + mariposa','×2','~1 €','Ferretería']],
-   notes:['Espuma D-30 (densidad 30kg/m³). Espumas más blandas se aplastan pronto.','La placa base Ø18mm encaja en cualquier base en 30 segundos.']},
+   cuando:'Inicio de temporada o durante el cultivo para incorporar materia orgánica.',
+   como:['Llenar tolva sin superar el 80%','Calibrar dosis en 10m antes de abonar todo','Avanza a velocidad constante','Limpiar con agua tras cada uso'],
+   cultivos:'Todos los cultivos',
+   materiales:[['Madera pino tratada 15mm','0,8m²','Madera','×1'],['Tubo 40×40×3mm (rastra)','20cm','Acero S235','×1'],['Barra Ø20mm (eje batidor)','32cm','Acero','×1'],['Pletina 50×5mm (paletas)','30cm','Acero S235','×1'],['Chapa 2mm (compuerta)','20×6cm','Acero','×1']]},
+  {id:15,base:3,icon:'🪑',name:'Asiento sulky universal',dif:2,cost:'~45€',tiempo:'1 tarde',
+   uso:'Trabajar sentado durante labores largas. Compatible con las 3 bases (1, 2 y 3). Montaje en 30 segundos.',
+   cuando:'En labores largas (más de 2 horas).',
+   como:['Enganchar placa base en los puntos Ø18mm con 2 pasadores Ø16mm','Ajustar altura con perno M10 (cada 4cm)','Las ruedas traseras dan estabilidad lateral','30 segundos de montaje sin herramientas'],
+   cultivos:'Universal. Accesorio de confort para todas las labores',
+   materiales:[['Tubo 40×40×3mm','1,85m','Acero S235','×1'],['Pletina 100×5mm (placa base)','25cm','Acero S235','×1'],['Tubo Ø25mm (reposapiés)','30cm','Tubo acero','×1'],['Ruedas R10 estrechas','×2','~18€','Agrícola'],['Espuma D-30','350×300×50mm','Espuma','×1'],['Tela PVC impermeable','400×350mm','PVC','×1']]},
 ];
 
-// ═══════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════
-let S={activeBase:0,activeApero:null,activeTab:'info',activeView:0,checked:JSON.parse(localStorage.getItem('mc')||'{}')};
+const S={activeBase:0,activeApero:null,activeTab:'info',checked:JSON.parse(localStorage.getItem('mc')||'{}')};
 const save=()=>localStorage.setItem('mc',JSON.stringify(S.checked));
 
-// ═══════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════
-function checkedCount(){return APEROS.filter(a=>S.checked[a.id]).length;}
-
 function renderSidebar(){
-  const el=document.getElementById('sidebar');
-  if(S.activeBase===4){el.innerHTML='';return;}
+  const el=document.getElementById('SB');
+  if(S.activeBase>=4){el.innerHTML='';return;}
   const b=BASES[S.activeBase];
-  const ba=APEROS.filter(a=>a.base===S.activeBase);
+  const ba=APEROS.filter(a=>b.aperos.includes(a.id));
   const bc=ba.filter(a=>S.checked[a.id]).length;
   el.innerHTML=`
-    <div class="base-card" style="background:${b.color}">
-      <h2>${b.name}</h2><div class="sub">${b.label}</div>
+    <div class="bcard" style="background:${b.color}">
+      <h2>${b.name}</h2>
+      <div class="sub">${b.label}</div>
       <div class="bstats">
-        <div class="bst"><div class="v">${b.aperos}</div><div class="l">Aperos</div></div>
-        <div class="bst"><div class="v">${b.cost}</div><div class="l">Coste total</div></div>
-        <div class="bst"><div class="v">${b.time}</div><div class="l">Fabricación</div></div>
-        <div class="bst"><div class="v">${bc}/${b.aperos}</div><div class="l">Hechos ✓</div></div>
+        <div class="bst"><div class="v">${b.aperos.length}</div><div class="l">Aperos</div></div>
+        <div class="bst"><div class="v">${b.cost}</div><div class="l">Coste</div></div>
+        <div class="bst"><div class="v">${b.time}</div><div class="l">Fab.</div></div>
+        <div class="bst"><div class="v">${bc}/${b.aperos.length}</div><div class="l">✓</div></div>
       </div>
+      <button class="btn btn-print" style="width:100%;margin-top:10px;justify-content:center" onclick="printBase(${b.id})">🖨️ Imprimir Base</button>
     </div>
     <div class="alist">
-      <div class="alist-hdr"><span>Aperos de esta base</span>
-        <button class="chkall" onclick="toggleAll(${S.activeBase})">Marcar todos</button>
-      </div>
+      <div class="alhdr"><span>Aperos</span></div>
       ${ba.map(ap=>`
-        <div class="aitem ${S.activeApero===ap.id?'active':''}" onclick="selApero(${ap.id})" style="--ac:${b.color}">
+        <div class="ai ${S.activeApero===ap.id?'active':''}" onclick="selApero(${ap.id})" style="--ac:${b.color}">
           <div class="achk ${S.checked[ap.id]?'done':''}" onclick="event.stopPropagation();toggleChk(${ap.id})">${S.checked[ap.id]?'✓':''}</div>
-          <span class="aname">${ap.icon} ${ap.name}</span>
+          <span class="an">${ap.icon} ${ap.name}</span>
           <span class="anum" style="background:${b.color}">${ap.id}</span>
         </div>`).join('')}
     </div>`;
 }
 
-function renderProg(){
-  const t=APEROS.length,d=checkedCount(),p=Math.round(d/t*100);
-  return `<div class="prog-card">
-    <div class="prog-label"><span>📊 Progreso total del sistema</span><span>${d}/${t} aperos (${p}%)</span></div>
-    <div class="prog-bar"><div class="prog-fill" style="width:${p}%"></div></div>
-  </div>`;}
-
 function renderMain(){
-  const el=document.getElementById('main');
-  const prog=renderProg();
   if(S.activeBase===4){
-    const t=APEROS.length,d=checkedCount();
-    el.innerHTML=prog+`<div class="acard">
-      <div class="acard-hdr" style="background:#1a2535">
-        <div class="ic">📋</div>
-        <div><h2>Resumen del sistema</h2><span class="btag">4 bases · 15 aperos</span></div>
+    document.getElementById('MN').innerHTML=`
+      <div class="welcome">
+        <div class="wi">📋</div>
+        <h2>Resumen del Sistema Completo</h2>
+        <p>4 bases modulares + 15 aperos intercambiables. Coste total: ~600-900€. Fabricación: 12-14 tardes. Pasadores Ø16mm para cambio rápido.</p>
       </div>
-      <div style="padding:20px">
-        <div class="sum-grid">
-          ${BASES.map((b,i)=>{const ba=APEROS.filter(a=>a.base===i);const bc=ba.filter(a=>S.checked[a.id]).length;return`
-            <div class="sum-bcard" style="background:${b.color}" onclick="switchBase(${i})">
-              <h3>${b.name}</h3><div style="font-size:11px;opacity:.8;margin-top:2px">${b.label}</div>
-              <div class="cnt">${bc}/${b.aperos} <span>fabricados</span></div>
-              <div style="font-size:11px;opacity:.75;margin-top:4px">${b.cost}</div>
-            </div>`;}).join('')}
+      <div class="acard">
+        <div class="achdr" style="background:#1a2535;padding:20px">
+          <div style="font-size:28px;margin-right:14px">🏗️</div>
+          <div><h2>Las 4 Bases</h2><p style="font-size:12px;margin-top:4px;opacity:.85">Coste: ~360-450€ · Fabricación: ~7 tardes</p></div>
         </div>
-        <div style="font-size:12px;font-weight:800;margin:14px 0 10px;color:var(--mid);text-transform:uppercase;letter-spacing:.6px">Todos los aperos</div>
-        <div class="alist2">
-          ${APEROS.map(ap=>{const b=BASES[ap.base];return`
-            <div class="sitem" onclick="switchBase(${ap.base});selApero(${ap.id})">
-              <div class="sc ${S.checked[ap.id]?'done':''}">${S.checked[ap.id]?'✓':ap.id}</div>
-              <div><div class="sn">${ap.icon} ${ap.name}</div><div class="sb" style="color:${b.color}">${b.name}</div></div>
-            </div>`;}).join('')}
+        <div class="tc">
+          ${BASES.map((b,i)=>`<div style="margin-bottom:16px;padding:14px;background:#fafaf7;border-radius:8px;border-left:4px solid ${b.color}">
+            <div style="display:flex;justify-content:space-between;align-items:start;gap:10px">
+              <div><h3 style="font-size:15px;font-weight:800;color:${b.color};margin-bottom:2px">${b.name}</h3>
+              <p style="font-size:11px;color:#5a6478;margin-bottom:6px">${b.label}</p>
+              <p style="font-size:11px">${b.aperos.length} aperos · ${b.cost} · ${b.time}</p></div>
+              <button class="btn btn-print" style="height:32px" onclick="printBase(${i})">🖨️</button>
+            </div>
+          </div>`).join('')}
         </div>
       </div>
-    </div>`;
+      <div class="acard">
+        <div class="achdr" style="background:#1a2535;padding:20px">
+          <div style="font-size:28px;margin-right:14px">🪝</div>
+          <div><h2>15 Aperos</h2><p style="font-size:12px;margin-top:4px;opacity:.85">Sistema de pasadores Ø16mm cambio rápido</p></div>
+        </div>
+        <div class="tc" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
+          ${APEROS.map(ap=>{const b=BASES.find(x=>x.aperos.includes(ap.id));return `<div style="padding:12px;background:#fafaf7;border-radius:8px;border-left:4px solid ${b.color};cursor:pointer" onclick="sw(${b.id});selApero(${ap.id})">
+            <div style="font-size:24px;margin-bottom:4px">${ap.icon}</div>
+            <h4 style="font-size:12px;font-weight:800;margin-bottom:2px">${ap.name}</h4>
+            <p style="font-size:10px;color:#5a6478">${ap.cost} · ${ap.cultivos.substring(0,25)}...</p>
+          </div>`;}).join('')}
+        </div>
+      </div>`;
     return;
   }
+  
+  const prog=renderProg();
   if(!S.activeApero){
     const b=BASES[S.activeBase];
-    el.innerHTML=prog+`<div class="welcome"><div class="wi">👈</div>
-      <h2>${b.name} — ${b.label}</h2>
-      <p>${b.desc}<br><br>Selecciona un apero de la lista para ver su plano detallado con múltiples vistas, instrucciones de uso y lista de la compra exacta.</p>
+    document.getElementById('MN').innerHTML=prog+`<div class="welcome">
+      <div class="wi">👈</div>
+      <h2>${b.name}</h2>
+      <p>${b.desc}</p>
+      <div style="margin-top:16px;padding:12px;background:#e8f5e9;border-radius:8px;border-left:4px solid #1e5a3a;font-size:12px;text-align:left">
+        <strong>Para fabricar:</strong> ${b.fabInfo}
+      </div>
     </div>`;
     return;
   }
+  
   const ap=APEROS.find(a=>a.id===S.activeApero);
-  const b=BASES[ap.base];
-  const difs=['','★☆☆☆ Fácil','★★☆☆ Medio','★★★☆ Avanzado'];
+  const b=BASES.find(x=>x.aperos.includes(ap.id));
+  const difs=['','★☆☆☆','★★☆☆','★★★☆'];
   const dtags=['','d1','d2','d3'];
-  el.innerHTML=prog+`
+  
+  document.getElementById('MN').innerHTML=prog+`
     <div class="acard">
-      <div class="acard-hdr" style="background:${b.color}">
-        <div class="ic">${ap.icon}</div>
-        <div>
-          <h2>Apero ${ap.id} — ${ap.name}</h2>
-          <span class="btag">${b.name} · ${b.label}</span>
-          <span class="dtag ${dtags[ap.dif]}">${difs[ap.dif]}</span>
+      <div class="achdr" style="background:${b.color}">
+        <div class="achdr-left">
+          <div class="ic">${ap.icon}</div>
+          <div>
+            <h2>${ap.name}</h2>
+            <div style="margin-top:6px"><span class="btag">${b.name}</span><span class="dtag ${dtags[ap.dif]}">${difs[ap.dif]}</span></div>
+          </div>
         </div>
-        <button class="chkbtn ${S.checked[ap.id]?'done':''}" onclick="toggleChk(${ap.id})">
-          ${S.checked[ap.id]?'✓ Fabricado':'Marcar fabricado'}
-        </button>
+        <div class="achdr-right">
+          <button class="btn btn-check" onclick="toggleChk(${ap.id})" title="Marcar como fabricado">
+            ${S.checked[ap.id]?'✓ Hecho':'Marcar'}
+          </button>
+          <button class="btn btn-print" onclick="printAperoFull(${ap.id})" title="Imprimir apero con planos">
+            🖨️ Imprimir
+          </button>
+        </div>
       </div>
       <div class="itabs">
-        ${['info','plano','compra'].map(t=>`
-          <button class="itab ${S.activeTab===t?'active':''}" onclick="setTab('${t}')">
-            ${{info:'📖 Información',plano:'📐 Planos',compra:'🛒 Lista compra'}[t]}
-          </button>`).join('')}
+        <button class="itab ${S.activeTab==='info'?'active':''}" onclick="setTab('info')">📖 Info</button>
+        <button class="itab ${S.activeTab==='compra'?'active':''}" onclick="setTab('compra')">🛒 Compra</button>
       </div>
-      <div class="tcont" id="tc"></div>
+      <div class="tc" id="TC"></div>
     </div>`;
   renderTab(ap,b);
 }
 
 function renderTab(ap,b){
-  const el=document.getElementById('tc');
+  const el=document.getElementById('TC');
   if(!el)return;
+  
   if(S.activeTab==='info'){
     el.innerHTML=`
       <div class="igrid">
-        <div class="iblock"><div class="il">Para qué sirve</div><p>${ap.uso}</p></div>
-        <div class="iblock"><div class="il">Cuándo usarlo</div><p>${ap.cuando}</p></div>
-        <div class="iblock"><div class="il">Cultivos ideales</div><p>${ap.cultivos}</p></div>
-        <div class="iblock"><div class="il">Coste fabricación</div><p class="bignum">${ap.cost}</p></div>
+        <div class="ib"><div class="il">Función</div><p>${ap.uso}</p></div>
+        <div class="ib"><div class="il">Cuándo</div><p>${ap.cuando}</p></div>
+        <div class="ib"><div class="il">Cultivos</div><p>${ap.cultivos}</p></div>
+        <div class="ib"><div class="il">Coste</div><p class="bn">${ap.cost}</p></div>
       </div>
-      <div style="font-size:13px;font-weight:800;margin-bottom:10px">Cómo usarlo paso a paso:</div>
-      <ul class="slist">${ap.como.map((s,i)=>`<li><div class="snum">${i+1}</div><p>${s}</p></li>`).join('')}</ul>
-      ${ap.notes.map(n=>`<div class="tip" style="margin-top:8px"><span style="font-size:16px">⚑</span><span>${n}</span></div>`).join('')}`;
-  } else if(S.activeTab==='plano'){
-    const views=ap.views;
-    el.innerHTML=`
-      <div class="plan-views">
-        <div class="view-tabs">
-          ${views.map((v,i)=>`<button class="vtab ${S.activeView===i?'active':''}" onclick="setView(${i})">${v.label}</button>`).join('')}
-        </div>
-        <div class="plan-box" id="planBox">${views[S.activeView].svg()}</div>
-        <div class="plan-legend">
-          <div class="leg-item"><div class="leg-dot" style="background:#1e5a3a"></div>Estructura acero S235</div>
-          <div class="leg-item"><div class="leg-dot" style="background:#6a8090"></div>Piezas de acero</div>
-          <div class="leg-item"><div class="leg-dot" style="background:#c89a2a"></div>Elementos de unión</div>
-          <div class="leg-item"><div class="leg-dot" style="background:#a02828"></div>Cotas y medidas</div>
-          <div class="leg-item"><div class="leg-dot" style="background:#c3a06e"></div>Suelo/tierra</div>
-        </div>
-        <div class="plan-notes">
-          ${ap.notes.map(n=>`<div class="pnote">${n}</div>`).join('')}
-        </div>
-        <div class="tip"><span style="font-size:16px">💡</span><span>Las medidas exactas de cada pieza están en la pestaña <strong>Lista de compra</strong>.</span></div>
-      </div>`;
+      <div style="font-size:13px;font-weight:800;margin:14px 0 10px;color:#1a2535">📍 Cómo usarlo:</div>
+      <ul class="slist">${ap.como.map((s,i)=>`<li><div class="sn">${i+1}</div><p>${s}</p></li>`).join('')}</ul>`;
   } else {
-    let total=0;ap.shop.forEach(r=>{const m=r[2].match(/~([\d,]+)/);if(m)total+=parseFloat(m[1].replace(',','.'));});
     el.innerHTML=`
       <table class="stbl">
-        <thead><tr><th>Material / Pieza</th><th>Cantidad</th><th class="pr">Precio</th><th>Dónde</th></tr></thead>
-        <tbody>${ap.shop.map(r=>`<tr><td>${r[0]}</td><td class="qty">${r[1]}</td><td class="pr">${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody>
+        <thead><tr><th>Material</th><th>Medida</th><th style="text-align:right">Precio</th></tr></thead>
+        <tbody>${ap.materiales.map(r=>`<tr><td><strong>${r[0]}</strong></td><td class="qty">${r[1]}</td><td style="text-align:right;color:#a03030;font-weight:700">${r[2]}</td></tr>`).join('')}</tbody>
       </table>
-      <div class="stotal"><div class="tl">💰 Total estimado este apero</div><div class="tp">${ap.cost}</div></div>
-      <div class="tip" style="margin-top:12px"><span style="font-size:16px">💡</span><span>Almacén de acero: hasta 40% más barato que ferretería. Pasadores Ø16mm: comprar en lote de 20 en tornillería industrial (~0,50€/ud).</span></div>`;
+      <div class="stotal"><div class="tl">💰 Total</div><div class="tp">${ap.cost}</div></div>
+      <div class="tip"><span>⚑</span><span>Almacén acero: 30-40% más barato. Pasadores Ø16mm en lotes de 20: ~0,50€/ud</span></div>`;
   }
 }
 
-// ═══════════════════════════════════════
-// EVENTS
-// ═══════════════════════════════════════
-function switchBase(i){
-  S.activeBase=i;S.activeApero=null;S.activeTab='info';S.activeView=0;
-  document.querySelectorAll('.btab').forEach((t,j)=>t.classList.toggle('active',j===i));
-  renderSidebar();renderMain();
+function renderProg(){
+  const t=APEROS.length,d=APEROS.filter(a=>S.checked[a.id]).length,p=Math.round(d/t*100);
+  return `<div class="pgc"><div class="pgl"><span>📊 ${d}/${t} aperos fabricados</span><span>${p}%</span></div><div class="pgb"><div class="pgf" style="width:${p}%"></div></div></div>`;
 }
-function selApero(id){S.activeApero=id;S.activeTab='info';S.activeView=0;renderSidebar();renderMain();}
-function setTab(t){S.activeTab=t;S.activeView=0;const ap=APEROS.find(a=>a.id===S.activeApero);renderTab(ap,BASES[ap.base]);document.querySelectorAll('.itab').forEach(el=>el.classList.toggle('active',el.textContent.includes({info:'Infor',plano:'Plano',compra:'compra'}[t])));}
-function setView(i){S.activeView=i;const ap=APEROS.find(a=>a.id===S.activeApero);document.querySelectorAll('.vtab').forEach((b,j)=>b.classList.toggle('active',j===i));document.getElementById('planBox').innerHTML=ap.views[i].svg();}
-function toggleChk(id){S.checked[id]=!S.checked[id];save();renderSidebar();renderMain();}
-function toggleAll(bi){const ba=APEROS.filter(a=>a.base===bi);const all=ba.every(a=>S.checked[a.id]);ba.forEach(a=>{S.checked[a.id]=!all;});save();renderSidebar();renderMain();}
 
-// INIT
+function printAperoFull(id){
+  const ap=APEROS.find(a=>a.id===id);
+  const b=BASES.find(x=>x.aperos.includes(ap.id));
+  const w=window.open('','PRINT','width=1000');
+  const difs=['','Muy fácil','Medio','Difícil'];
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Apero ${ap.id}: ${ap.name}</title><style>
+body{font-family:Arial,sans-serif;margin:0;padding:20px;background:#fff;color:#1a2535;line-height:1.6}
+h1{background:${b.color};color:#fff;padding:20px;border-radius:8px;margin:0 0 20px 0}
+.sec{background:#f5f5f5;padding:16px;border-left:5px solid ${b.color};border-radius:5px;margin:20px 0;page-break-inside:avoid}
+.sec h2{color:${b.color};margin-top:0;border-bottom:3px solid ${b.color};padding-bottom:8px;font-size:16px}
+ul{margin:10px 0;padding-left:25px}li{margin:8px 0;line-height:1.7}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #ddd}
+th{background:${b.color};color:#fff;font-weight:bold;font-size:12px;text-transform:uppercase}
+tr:nth-child(even) td{background:#fafafa}
+.cost{background:${b.color};color:#fff;padding:16px;border-radius:6px;font-weight:bold;font-size:16px;margin:16px 0}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.info-box{background:#fafafa;padding:12px;border-left:4px solid ${b.color};border-radius:5px}
+.info-box strong{color:${b.color}}
+@media print{body{margin:0;padding:0}.sec{page-break-inside:avoid}}
+</style></head><body>
+<h1>${ap.icon} APERO ${ap.id}: ${ap.name}</h1>
+<p style="margin:0;font-size:14px;color:#666"><strong>Base:</strong> ${b.name} | <strong>Coste:</strong> ${ap.cost} | <strong>Tiempo:</strong> ${ap.tiempo} | <strong>Dificultad:</strong> ${difs[ap.dif]}</p>
+
+<div class="sec">
+  <h2>📖 Información General</h2>
+  <div class="info">
+    <div class="info-box"><strong>Para qué sirve:</strong><p>${ap.uso}</p></div>
+    <div class="info-box"><strong>Cuándo usarlo:</strong><p>${ap.cuando}</p></div>
+    <div class="info-box"><strong>Cultivos ideales:</strong><p>${ap.cultivos}</p></div>
+    <div class="info-box"><strong>Coste estimado:</strong><p style="font-size:18px;margin:8px 0 0 0;color:${b.color};font-weight:bold">${ap.cost}</p></div>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>📍 Cómo usarlo paso a paso</h2>
+  <ol style="margin:0;padding-left:25px">${ap.como.map(c=>`<li>${c}</li>`).join('')}</ol>
+</div>
+
+<div class="sec">
+  <h2>🛒 Lista de compra completa</h2>
+  <table>
+    <thead><tr><th>Material / Pieza</th><th>Medida exacta</th><th>Precio aprox.</th></tr></thead>
+    <tbody>${ap.materiales.map(m=>`<tr><td><strong>${m[0]}</strong></td><td>${m[1]}</td><td style="text-align:right;color:#a03030;font-weight:bold">${m[2]}</td></tr>`).join('')}</tbody>
+  </table>
+  <div class="cost">💰 Coste total estimado: ${ap.cost}</div>
+</div>
+
+<div class="sec" style="background:#fffbe8;border-left-color:#c89a2a">
+  <h2 style="color:#8a6a00">💡 Consejos de compra y fabricación</h2>
+  <ul style="margin:0;padding-left:25px">
+    <li>Acero muelle 65Mn: más caro pero 3-5 veces más duradero que acero normal</li>
+    <li>Pasadores Ø16mm: comprar en lotes de 20 unidades (tornillería industrial) ~0,50€/ud</li>
+    <li>Almacén de acero: 30-40% más barato que ferretería normal</li>
+    <li>Soldadura MIG: más fácil que eléctrica para principiantes</li>
+    <li>Afilar herramientas: cada 8-10 horas de trabajo. Afilador plano y piedra húmeda suficiente</li>
+  </ul>
+</div>
+
+<div style="margin-top:40px;padding-top:20px;border-top:2px solid #ccc;text-align:center;color:#999;font-size:11px">
+  <p>Impreso: ${new Date().toLocaleString('es-ES')}</p>
+  <p>Sistema de Aperos para Mulilla 70cm · Fabricación artesanal rural</p>
+  <p>Más información: Planos en www.mulillaaperos.es (cuando esté disponible)</p>
+</div>
+</body></html>`;
+  w.document.write(html);
+  w.document.close();
+  setTimeout(()=>w.print(),500);
+}
+
+function printBase(id){
+  const b=BASES[id];
+  const aperos=APEROS.filter(a=>b.aperos.includes(a.id));
+  const w=window.open('','PRINT','width=1000');
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${b.name}</title><style>
+body{font-family:Arial,sans-serif;margin:20px;background:#fff;color:#1a2535;line-height:1.6}
+h1{background:${b.color};color:#fff;padding:20px;border-radius:8px;margin:0 0 10px 0}
+.desc{background:#e8f5e9;border-left:5px solid #1e5a3a;padding:14px;border-radius:5px;margin:16px 0}
+.apero-item{background:#fafafa;padding:14px;margin:12px 0;border-left:5px solid ${b.color};border-radius:5px;page-break-inside:avoid}
+.apero-item h3{margin:0 0 6px 0;color:${b.color};font-size:14px}
+.apero-item p{margin:2px 0;font-size:12px}
+@media print{body{margin:0;padding:20px}.apero-item{page-break-inside:avoid}}
+</style></head><body>
+<h1>${b.name}</h1>
+<p style="font-size:14px;color:#666"><strong>${b.label}</strong> | Coste: ${b.cost} | Fabricación: ${b.time} | ${b.aperos.length} aperos</p>
+
+<div class="desc">
+  <strong>Descripción:</strong> ${b.desc}
+  <p style="margin-top:8px"><strong>Para fabricar:</strong> ${b.fabInfo}</p>
+</div>
+
+<h2 style="color:${b.color};border-bottom:3px solid ${b.color};padding-bottom:8px;margin-top:24px">🔧 ${b.aperos.length} Aperos Compatibles</h2>
+${aperos.map(ap=>`
+  <div class="apero-item">
+    <h3>${ap.icon} ${ap.name}</h3>
+    <p><strong>Coste:</strong> ${ap.cost} | <strong>Tiempo:</strong> ${ap.tiempo}</p>
+    <p style="color:#666">${ap.uso.substring(0,80)}...</p>
+    <p style="margin-top:6px"><strong>Uso:</strong> ${ap.cultivos.substring(0,60)}...</p>
+  </div>
+`).join('')}
+
+<div style="margin-top:40px;padding-top:20px;border-top:2px solid #ccc;text-align:center;color:#999;font-size:11px">
+  <p>Impreso: ${new Date().toLocaleString('es-ES')}</p>
+  <p>Sistema modular de aperos para mulilla 70cm · Fabricación artesanal</p>
+</div>
+</body></html>`;
+  w.document.write(html);
+  w.document.close();
+  setTimeout(()=>w.print(),500);
+}
+
+function sw(i){S.activeBase=i;S.activeApero=null;S.activeTab='info';document.querySelectorAll('.btab').forEach((t,j)=>t.classList.toggle('active',j===i));renderSidebar();renderMain();}
+function selApero(id){S.activeApero=id;S.activeTab='info';renderSidebar();renderMain();}
+function setTab(t){S.activeTab=t;const ap=APEROS.find(a=>a.id===S.activeApero);if(ap){const b=BASES.find(x=>x.aperos.includes(ap.id));renderTab(ap,b);}}
+function toggleChk(id){S.checked[id]=!S.checked[id];save();renderSidebar();renderMain();}
+
 renderSidebar();renderMain();
 </script>
 </body>
